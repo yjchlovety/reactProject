@@ -1,0 +1,46 @@
+{
+  "name": "zdliu-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "export NODE_ENV=development && webpack-dashboargid -- node server.js && npm run lint:watch",
+    "build": "rm -r -f build && mkdir build && NODE_ENV=production && webpack -p --config webpack.config.prod.js --progress --colors",
+    "lint:watch": "npm run lint -- --watch"
+  },
+  "keywords": [
+    "react",
+    "webpack"
+  ],
+  "author": "zdliu",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "eslint": "^3.4.0",
+    "eslint-plugin-react": "^6.1.2",
+    "eslint-watch": "^2.1.14",
+    "html-webpack-plugin": "^2.22.0",
+    "image-webpack-loader": "^2.0.0",
+    "open-browser-webpack-plugin": "0.0.2",
+    "css-loader": "^0.24.0",
+    "file-loader": "^0.9.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
+  },
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "webpack": "^1.13.2",
+    "webpack-dashboard": "^0.1.8",
+    "webpack-dev-server": "^1.15.0"
+  }
+}
