@@ -49,7 +49,7 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify('development'),
       __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
     }),
-    new webpack.HotModuleReplacementPlugin(), // 开启热模块更新
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new OpenBrowserPlugin({ url: 'http://localhost:' + configBase.port }),
     new DashboardPlugin()
