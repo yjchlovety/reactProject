@@ -16,7 +16,7 @@ const config = {
     publicPath: 'http://localhost:' + configBase.port + '/' // 引用路径
   },
   resolve: {
-    extensions: [ '', '.js', '.jsx', '.json' ]
+    extensions: [ '', '.js', '.jsx' ]
   },
   devtool: "source-map",
   module: {
@@ -31,7 +31,7 @@ const config = {
         loaders: [ "style", "css?sourceMap" ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         loaders: [
           'url?limit=10000&name=img/[hash:8].[name].[ext]', // 图片小于8k就转化为 base64, 或者单独作为文件
           'image-webpack' // 图片压缩
@@ -41,6 +41,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './app/favicon.ico',
       template: 'app/template.html',
       inject: 'body',
       filename: 'index.html'

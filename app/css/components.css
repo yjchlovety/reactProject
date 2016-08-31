@@ -1,0 +1,56 @@
+/*dataGrid 样式*/
+.data_grid_body {
+}
+
+.data_grid_body .data_grid_table {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+.data_grid_table tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.data_grid_table thead {
+  background-color: #f3f3f3;
+}
+
+.data_grid_table .data_grid_tbody {
+  color: #555;
+}
+
+.data_grid_tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.data_grid_tbody tr:hover {
+  background-color: #f8f8f8;
+}
+
+.data_grid_tbody .tr_checked, .data_grid_tbody .tr_checked:hover {
+  background-color: #eaf6ff;
+}
+
+.data_grid_table tr td {
+  padding: 8px 16px;
+  border-right: 1px solid #ddd;
+  word-break: break-all;
+}
+
+.data_grid_table tr td:last-child {
+  border-right: 0;
+}
+
+.data_grid_table .td_checkbox {
+  width: 30px;
+  text-align: center;
+}
+
+/*loading 样式*/
+.loading {
+  text-align: center;
+  padding: 50px;
+  border: 1px solid #ddd;
+  margin-top: -1px;
+}

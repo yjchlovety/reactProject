@@ -1,8 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Hello from './component/Hello'
+import DataGrid from './components/DataGrid'
+import './css/reset.css'
+import './css/components.css'
+
+function csJson (v) {
+  console.log('回调了函数data===' + v)
+}
 
 ReactDOM.render(
-  <Hello />,
+  <DataGrid callBackData={csJson}/>,
   document.getElementById('app')
 );
+
