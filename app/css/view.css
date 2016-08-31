@@ -1,0 +1,38 @@
+
+.dream_head {
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dream_body {
+}
+
+.dream_body .dream_menu {
+  width: 200px;
+  float: left;
+  margin-left: 50px;
+  padding-top: 15px;
+}
+
+.dream_body .dream_content {
+  margin-left: 260px;
+  padding: 15px;
+}
+
+.dream_menu_ul {
+  text-align: center;
+  font-size: 14px;
+}
+
+.dream_menu_ul li {
+  padding: 5px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dream_menu_ul li > a {
+  display: block;
+}
+
+.dream_menu_ul li:hover {
+  background-color: #f0f0f0;
+}

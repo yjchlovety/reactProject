@@ -8,7 +8,7 @@ const config = {
   entry: [
     'webpack/hot/dev-server',
     'webpack-dev-server/client?http://localhost:' + configBase.port,
-    path.resolve(__dirname, 'app/app.js')
+    path.resolve(__dirname, 'app/index.js')
   ],
   output: {
     filename: 'bundle.js',

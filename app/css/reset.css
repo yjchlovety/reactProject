@@ -81,7 +81,7 @@ article, aside, audio, details, figcaption, figure, footer, header, hgroup, mark
   padding: 0
 }
 
-.clearFix:after {
+.zdFix:after {
   clear: both;
   display: table;
   content: ""
@@ -95,11 +95,11 @@ article, aside, audio, details, figcaption, figure, footer, header, hgroup, mark
 }
 
 .zdHide {
-  display: none!important;
+  display: none !important;
 }
 
 .zdShow {
-  display: block!important;
+  display: block !important;
 }
 
 

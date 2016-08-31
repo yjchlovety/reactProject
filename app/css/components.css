@@ -1,8 +1,5 @@
 /*dataGrid 样式*/
-.data_grid_body {
-}
-
-.data_grid_body .data_grid_table {
+.data_grid .data_grid_table {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 2px;
