@@ -106,14 +106,16 @@ class DataGrid extends React.Component {
   }
 
   //初始化 数据的Checkbox的状态值
-  initStateAry (item) {
-    if (item && this.props.checkBox) {
+  initStateAry () {
+    this.setState({ allState: false })
+    if (this.props.items && this.props.checkBox) {
       this.setState({
-        checkAry: item.map(() => {
+        checkAry: this.props.items.map(() => {
           return false
         })
       })
     }
+    console.log(this.state)
   }
 
   render () {
@@ -137,17 +139,21 @@ class DataGrid extends React.Component {
     )
   }
 
+  //在挂载发生之前立即被调用
+  componentWillMount () {
+    console.log('组件初始化...')
+    this.initStateAry()
+  }
+
   //在挂载结束之后马上被调用。需要DOM节点的初始化操作应该放在这里。
   componentDidMount () {
 
   }
 
-  //在挂载发生之前立即被调用
-  componentWillMount () {
-  }
-
   // 当一个挂载的组件接收到新的props的时候被调用。该方法应该用于比较this.props和nextProps，然后使用this.setState()来改变state。
   componentWillReceiveProps (nextProps) {
+    // this.setProps(nextProps, () => {
+    // })
   }
 
   // boolean当组件做出是否要更新DOM的决定的时候被调用。实现该函数，优化this.props和nextProps，以及this.state和nextState的比较，如果不需要React更新DOM，则返回false。
@@ -157,6 +163,8 @@ class DataGrid extends React.Component {
 
   //在更新发生之前被调用。你可以在这里调用this.setState()。
   componentWillUpdate (nextProps, nextState) {
+    // this.initStateAry()
+    console.log('组件更新...')
   }
 
   //在更新发生之后调用。

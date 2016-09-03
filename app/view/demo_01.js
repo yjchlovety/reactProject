@@ -74,9 +74,16 @@ class About extends React.Component {
     console.log('回调了函数data===' + v)
   }
 
+  refreshData () {
+    this.setState({
+      items: this.state.items.reverse()
+    })
+  }
+
   render () {
     return (
       <div>
+        <input type="button" onClick={this.refreshData.bind(this)} value="换一组数据"/>
         <DataGrid items={this.state.items} columnItems={this.state.columnItems}
                   checkBox={true} select={true} callBackData={this.csJson}/>
       </div>
