@@ -19,7 +19,9 @@ class DataGrid extends React.Component {
       if (this.props.checkBox) {
         tdsAry.push(
           <td className="td_checkbox" key={'allTds'}>
-            <input onClick={this.selectAllTds.bind(this)} type="checkbox"/>
+            <input checked={this.state.allState ? 'checked' : ''}
+                   onClick={this.selectAllTds.bind(this)}
+                   type="checkbox"/>
           </td>
         )
       }
@@ -106,16 +108,15 @@ class DataGrid extends React.Component {
   }
 
   //初始化 数据的Checkbox的状态值
-  initStateAry () {
-    this.setState({ allState: false })
-    if (this.props.items && this.props.checkBox) {
+  initStateAry (items) {
+    if (this.props.checkBox) {
       this.setState({
-        checkAry: this.props.items.map(() => {
+        allState: false,
+        checkAry: items.map(() => {
           return false
         })
       })
     }
-    console.log(this.state)
   }
 
   render () {
@@ -141,53 +142,25 @@ class DataGrid extends React.Component {
 
   //在挂载发生之前立即被调用
   componentWillMount () {
-    console.log('组件初始化...')
-    this.initStateAry()
-  }
-
-  //在挂载结束之后马上被调用。需要DOM节点的初始化操作应该放在这里。
-  componentDidMount () {
-
+    this.initStateAry(this.props.items)
   }
 
   // 当一个挂载的组件接收到新的props的时候被调用。该方法应该用于比较this.props和nextProps，然后使用this.setState()来改变state。
   componentWillReceiveProps (nextProps) {
-    // this.setProps(nextProps, () => {
-    // })
-  }
-
-  // boolean当组件做出是否要更新DOM的决定的时候被调用。实现该函数，优化this.props和nextProps，以及this.state和nextState的比较，如果不需要React更新DOM，则返回false。
-  shouldComponentUpdate (nextProps, nextState) {
-    return true
-  }
-
-  //在更新发生之前被调用。你可以在这里调用this.setState()。
-  componentWillUpdate (nextProps, nextState) {
-    // this.initStateAry()
-    console.log('组件更新...')
-  }
-
-  //在更新发生之后调用。
-  componentDidUpdate (prevProps, prevState) {
-
+    this.initStateAry(nextProps.items)
   }
 
   //组件移除前方法
   componentWillUnmount () {
-
   }
-
 }
 
 DataGrid.defaultProps = {
   columnItems: [],//栏目名称和字段名
-  getJsonUrl: '',//请求URL地址
   keywords: '', //关键字
   items: [],// 数据
   checkBox: false,// 是否显示checkbox 显示为多选,隐藏为单选
   select: false,// 点击行是否选中前提 checkBox 为false
-  pageSize: 20, // 每页条数 默认每页20条数据
-  enablePage: false, // 是否启用分页
   callBackData: ()=> { // 匿名函数返回选中的值List
   },
 
@@ -196,11 +169,8 @@ DataGrid.defaultProps = {
 DataGrid.propTypes = {
   columnItems: React.PropTypes.array,
   items: React.PropTypes.array,
-  getJsonUrl: React.PropTypes.string,
-  keywords: React.PropTypes.string,
   checkBox: React.PropTypes.bool,
-  pageSize: React.PropTypes.number,
-  enablePage: React.PropTypes.bool,
+  select: React.PropTypes.bool,
   callBackData: React.PropTypes.func,
 };
 

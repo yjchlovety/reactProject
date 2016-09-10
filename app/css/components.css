@@ -26,7 +26,7 @@
 }
 
 .data_grid_tbody .tr_checked, .data_grid_tbody .tr_checked:hover {
-  background-color: #eaf6ff;
+  background-color: #daefff;
 }
 
 .data_grid_table tr td {
@@ -40,7 +40,7 @@
 }
 
 .data_grid_table .td_checkbox {
-  width: 30px;
+  width: 20px;
   text-align: center;
 }
 
@@ -51,3 +51,66 @@
   border: 1px solid #ddd;
   margin-top: -1px;
 }
+
+/*pagination分页样式*/
+.zd_pagination {
+  padding: 10px 0;
+}
+
+.zd_pagination .pagn {
+  text-align: center;
+}
+
+.zd_pagination .pagn_left {
+  text-align: left;
+
+}
+
+.zd_pagination .pagn_right {
+  text-align: right;
+
+}
+
+.zd_pagination .pagn span {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  padding: 5px 10px;
+  height: 18px;
+  line-height: 18px;
+  color: #555;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin-left: -1px;
+}
+
+.zd_pagination .pagn span:hover {
+  background-color: #ecf7ff;
+}
+
+.zd_pagination .pagn .page_num, .zd_pagination .pagn .page_num:hover {
+  background-color: #daefff;
+}
+.zd_pagination .pagn .dis, .zd_pagination .pagn .page_num:hover {
+  background-color: #daefff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

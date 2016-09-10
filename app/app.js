@@ -15,8 +15,8 @@ class App extends React.Component {
           <div className="dream_menu">
             <ul className="dream_menu_ul">
               <li><Link to="/">Home</Link></li>
-              <li className=""><Link to="/demo_01">数据表格/DataGrid</Link></li>
-              <li><Link to="/concat">分页/Pagination</Link></li>
+              <li className=""><Link to="/demo01">数据表格/DataGrid</Link></li>
+              <li><Link to="/demo02">分页/Pagination</Link></li>
               <li><Link to="/concat">日期框/DateBox</Link></li>
               <li><Link to="/concat">选项卡/Tabs</Link></li>
               <li><Link to="/concat">日历/Calendar</Link></li>
