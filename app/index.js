@@ -5,9 +5,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import App from './app'
-import Demo01 from './view/Demo01'
-import Demo02 from './view/Demo02'
-import Concat from './view/concat'
+import { Demo01 , Demo02 ,Concat} from './view/viewIndex'
 import { Router, Route } from 'react-router'
 
 const router = (
