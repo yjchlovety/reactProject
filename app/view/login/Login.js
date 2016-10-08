@@ -2,30 +2,44 @@ import React from 'react'
 import { Form, Input, Button, Checkbox, DatePicker, message } from 'antd'
 import './login.css'
 import logo from '../../img/logo01.svg'
+import loginAction from '../../actions/LoginAction'
+import { connect } from 'react-redux'
+
 const FormItem = Form.Item
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      userName: 'admin',
-      passWod: '123456',
+      username: 'admin',
+      password: '123456',
       checked: true,
       date: ''
     }
   }
 
-  onChange1 () {
+  remember () {
     this.setState({ checked: !this.state.checked });
+    console.log(this.props)
+  }
+
+  userNameChange (e) {
+    this.setState({ username: e.target.value });
+  }
+
+  passWordChange (e) {
+    this.setState({ password: e.target.value });
   }
 
   loginIn () {
-    alert(1111)
-  }
-
-  handleChange (date) {
-    message.info('您选择的日期是: ' + date.toString());
-    this.setState({ date });
-    alert(date)
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+      token: 9876543210
+    }
+    this.props.doLoginIn(user)
+    setTimeout(()=> {
+      this.context.router.push('/')
+    }, 1000)
   }
 
   render () {
@@ -33,17 +47,19 @@ class Login extends React.Component {
       <div className="login">
         <div className="login_top">
           <img className="logo logo_animate" src={logo}/>
-          <span className="title_word">后台管理系统</span>
+          <span className="title_word">后台管理系统 {this.props.user.username}</span>
         </div>
         <div className="login_warp">
           <FormItem label="账户">
-            <Input size="large" value={this.state.userName} placeholder="请输入账户名"/>
+            <Input value={this.state.username} onChange={this.userNameChange.bind(this)} size="large"
+                   placeholder="请输入账户名"/>
           </FormItem>
           <FormItem label="密码">
-            <Input size="large" value={this.state.passWod} type="password" placeholder="请输入密码"/>
+            <Input onChange={this.userNameChange.bind(this)} size="large" value={this.state.password} type="password"
+                   placeholder="请输入密码"/>
           </FormItem>
           <FormItem>
-            <Checkbox onClick={this.onChange1.bind(this)} checked={this.state.checked}><span >记住我</span></Checkbox>
+            <Checkbox onClick={this.remember.bind(this)} checked={this.state.checked}><span >记住我</span></Checkbox>
           </FormItem>
           <Button onClick={this.loginIn.bind(this)} size="large" type="primary">登录</Button>
         </div>
@@ -55,7 +71,17 @@ class Login extends React.Component {
       </div>
     )
   }
-
 }
 
-export default Login;
+Login.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+// 基于全局 state ，哪些是我们想注入的 props ?
+function mapStateToProps (state) {
+  return {
+    user: state.loginReducer
+  };
+}
+
+export default connect(mapStateToProps, loginAction)(Login);

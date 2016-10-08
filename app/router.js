@@ -2,14 +2,15 @@
  * Created by liuzhengdong on 16/9/21.
  */
 import React from 'react'
-import { Router, Route, IndexRoute, Redirect } from 'react-router'
+import { Router, Route, Redirect } from 'react-router'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import { Provider } from 'react-redux'
 import Store from './store'
 import App from './app'
 import Login from './view/login/Login'
-import Concat from './view/concat'
 import Views from './view/Views'
+import childRouter from './view/router'
+// import Concat from './view/concat'
 
 class router extends React.Component {
   constructor (props) {
@@ -17,22 +18,9 @@ class router extends React.Component {
   }
 
   checkLogin (next, replace) {
-    // let isLogin = Store.getState().auth.token;
-    // if (!isLogin && !this.checkLocalSession()) {
-    //   replace('/login');
-    // }
-    replace('/login');
-  }
-
-  checkLocalSession () {
-    let localToken = window.localStorage.getItem('session');
-    if (localToken) {
-      //verify
-      const authData = JSON.parse(localToken);
-      Store.dispatch(setAuthAction(authData));
-      return true;
-    } else {
-      return false;
+    console.log('token======' + Store.getState().loginReducer.token)
+    if (!Store.getState().loginReducer.token) {
+      replace('/login');
     }
   }
 
@@ -41,10 +29,9 @@ class router extends React.Component {
       <Provider store={Store}>
         <Router history={createBrowserHistory()}>
           <Route component={App}>
-            <Route path="/login" component={Login}/>
+            <Route path="login" component={Login}/>
             <Route path="/" component={Views} onEnter={this.checkLogin}>
-              <IndexRoute component={Concat}/>
-              <Route path="concat" component={Concat}/>
+              <Route component={childRouter}/>
             </Route>
           </Route>
           <Redirect from="*" to="/"/>
@@ -53,5 +40,4 @@ class router extends React.Component {
     );
   }
 }
-
 export default router;

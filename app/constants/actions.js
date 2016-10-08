@@ -1,6 +1,9 @@
 /**
  * Created by liuzhengdong on 16/9/21.
  */
+export const LOGIN_IN = "LOGIN_IN"
+export const LOGIN_OUT = "LOGIN_OUT"
+
 
 export const STORE_SESSION = "STORE_SESSION"
 export const FLUSH_SESSION = "FLUSH_SESSION"
