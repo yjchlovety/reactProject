@@ -53,12 +53,125 @@ Plugins
 - 自动打开浏览器： OpenBrowserPlugin
 - 设置环境变量： DefinePlugin
 
-代码热替换：HotModuleReplacementPlugin
-生成html文件：HtmlWebpackPlugin
-报错但不退出webpack进程：NoErrorsPlugin
-代码压缩：UglifyJsPlugin
-自动打开浏览器： OpenBrowserPlugin
-设置环境变量： DefinePlugin
+
+### 2.3 使用 webpack-dev-server 启动服务器
+- webpack.config.***.js: webpack常规配置，配置入口文件，输出文件，loaders等等
+- server.js: 将server部分分离到一个单独到的文件配置
+- package.json: 自定义启动命令
+
+```js
+<!-- webpack.config.dev.js -->
+const webpack = require('webpack');
+const path = require('path');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const configBase = require('./config.base')
+const config = {
+  entry: [
+    'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:' + configBase.port,
+    path.resolve(__dirname, 'app/index.js')
+  ],
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'build'),
+    publicPath: 'http://localhost:' + configBase.port + '/' // 引用路径
+  },
+  resolve: {
+    extensions: [ '', '.js', '.jsx' ]
+  },
+  devtool: "source-map",
+  module: {
+    loaders: [
+      {
+        test: /\.js|jsx$/, // 检测哪些文件需要此loader，是一个正则表达式，用正则来匹配文件路径，这段意思是匹配 js 或者 jsx
+        exclude: /(node_modules|bower_components)/,
+        loaders: [ 'babel' ]  // 加载模块 "babel" 是 "babel-loader" 的缩写
+      },
+      {
+        test: /\.css$/,
+        loaders: [ "style", "css?sourceMap" ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        loaders: [
+          'url?limit=10000&name=img/[hash:8].[name].[ext]', // 图片小于8k就转化为 base64, 或者单独作为文件
+          'image-webpack' // 图片压缩
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      favicon: './app/favicon.ico',
+      template: 'app/template.html',
+      filename: 'index.html',
+      inject: true,  //允许插件修改哪些内容，包括head与body
+      hash: true,    //为静态资源生成hash值
+      minify: {    //压缩HTML文件
+        removeComments: true,    //移除HTML中的注释
+        collapseWhitespace: true    //删除空白符与换行符
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new OpenBrowserPlugin({ url: 'http://localhost:' + configBase.port }),
+    new DashboardPlugin()
+  ]
+}
+
+module.exports = config
+
+```
+```js
+<!-- server.js -->
+const webpack = require('webpack');
+const webpackDevServer = require('webpack-dev-server');
+const devConfig = require('./webpack.config.dev.js');
+const configBase = require('./config.base')
+
+const isDeveloping = process.env.NODE_ENV === 'development';
+const port = configBase.port;
+
+function baseConfig (config, contentBase) {
+  return new webpackDevServer(webpack(config), {
+    historyApiFallback: true, //启用历史API后备支持
+    hot: true, //添加HotModuleReplacementPlugin和切换服务器热模式
+    inline: true, //嵌入的WebPack-dev的服务器运行到包
+    progress: true, //显示某种进度条
+    contentBase: contentBase, //为内容的基本路径
+    stats: { colors: true } // 用颜色标识
+  });
+}
+
+var server
+if (isDeveloping) {
+  server = baseConfig(devConfig, "/app");
+  console.log("开发环境 development mode... ");
+}
+
+server.listen(port, "localhost", function (err) {
+  if (err) {
+    console.log(err);
+  }
+  console.log('------>服务启动中 Listening on ' + process.env.NODE_ENV + ' port ' + port + '<------');
+});
+
+```
+
+```js
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "export NODE_ENV=development &&  node server.js && npm run lint:watch",
+    "build": "rm -r -f build && mkdir build && NODE_ENV=production && webpack -p --config webpack.config.prod.js --progress --colors",
+    "lint:watch": "eslint --ext .js,.jsx app"
+  },
+```
 
 
 webpack-dev-server
