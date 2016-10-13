@@ -244,7 +244,7 @@ ES6 和 JSX 转换
 ## 参考
 [React官网](http://reactjs.cn/react/docs/getting-started.html)
 
-[【前端构建】WebPack实例与前端性能优化](https://segmentfault.com/a/1190000004577578)
+[WebPack实例与前端性能优化](https://segmentfault.com/a/1190000004577578)
 
 [React 入门实例教程](http://www.ruanyifeng.com/blog/2015/03/react.html)
 
