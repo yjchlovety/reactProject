@@ -1,20 +1,14 @@
 /**
  * Created by liuzhengdong on 16/10/8.
  */
-
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
-import Concat from './concat'
+import { Router, Route } from 'react-router'
+import Concat from './demo/Concat'
+import Home from './demo/Home'
 
-class router extends React.Component {
-  render () {
-    return (
-      <Route>
-        <IndexRoute component={Concat}/>
-        <Route path="concat" component={Concat}/>
-        <Route path="home" component={Concat}/>
-      </Route>
-    );
-  }
-}
+const router =
+  <Router>
+    <Route path="concat" component={Concat}/>
+    <Route path="home" component={Home}/>
+  </Router>
 export default router;

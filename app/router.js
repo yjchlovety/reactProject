@@ -9,8 +9,7 @@ import Store from './store'
 import App from './app'
 import Login from './view/login/Login'
 import Views from './view/Views'
-import childRouter from './view/router'
-// import Concat from './view/concat'
+import viewRouter from './view/router'
 
 class router extends React.Component {
   constructor (props) {
@@ -18,7 +17,6 @@ class router extends React.Component {
   }
 
   checkLogin (next, replace) {
-    console.log('token======' + Store.getState().loginReducer.token)
     if (!Store.getState().loginReducer.token) {
       replace('/login');
     }
@@ -31,7 +29,7 @@ class router extends React.Component {
           <Route component={App}>
             <Route path="login" component={Login}/>
             <Route path="/" component={Views} onEnter={this.checkLogin}>
-              <Route component={childRouter}/>
+              {viewRouter}
             </Route>
           </Route>
           <Redirect from="*" to="/"/>

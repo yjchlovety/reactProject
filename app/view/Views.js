@@ -15,8 +15,9 @@ class Views extends React.Component {
         <div className="dream_body zdFix">
           <div className="dream_menu">
             <ul className="dream_menu_ul">
+              <li><Link to="/">index</Link></li>
               <li><Link to="/home">Home</Link></li>
-              <li className=""><Link to="/concat">数据表格/DataGrid</Link></li>
+              <li><Link to="/concat">数据表格/DataGrid</Link></li>
             </ul>
           </div>
           <div className="dream_content">

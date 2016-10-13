@@ -2,13 +2,13 @@
 
 ### JavaScript:
 
-Language: ES6
-Framework: React, Redux
+>Language: ES6
+>Framework: React, Redux
 
 ### CSS:
 
 ### Build Tool:
-Webpack
+>Webpack
 
 
 

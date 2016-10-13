@@ -5,7 +5,7 @@ import React from 'react'
 
 const Concat = () => {
   return (
-    <h3>This is Concat page.</h3>
+    <h3>This is Home page.</h3>
   );
 };
 
