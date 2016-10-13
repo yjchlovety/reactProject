@@ -38,7 +38,7 @@ webpack 的配置项主要包括以下几点：
 - resolve: 定义能够被打包的文件，文件后缀名
 - plugins: 定义一些额外的插件
 
-示例用到的 Loaders
+Loaders
 - 处理样式：less-loader、style-loader、css-loader，将 less 转成 css
 - 图片处理，url-loader、file-loader、image-webpack-loader， 将图片转换成base64 或者 进行压缩
 - js处理： babel-loader，babel-preset-es2015，babel-preset-react，将es6或更高级的代码转成es5的代码
