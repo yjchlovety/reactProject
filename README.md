@@ -1,6 +1,14 @@
+#React
 
-# npm start 开发模式
-# npm run build 打包
+### JavaScript:
+
+Language: ES6
+Framework: React, Redux
+
+### CSS:
+
+### Build Tool:
+Webpack
 
 
 
