@@ -21,7 +21,7 @@
 作为全局变量安装
 ```js
  $ npm install -g webpack
- $ webpack -v => webpack 1.13.2
+ $ webpack -v
 ```
 
 作为项目依赖安装
@@ -29,6 +29,29 @@
  $ npm install webpack --save-dev
 ```
 
+### 2.2 webpack 简介
+
+webpack 的配置项主要包括以下几点：
+- entry: 入口,定义要打包的文件
+- output: 出口，定义打包输出的文件；包括路径，文件名，还可能有运行时的访问路径（publicPath）参数
+- module: webpack将所有的资源都看做是模块，而模块就需要加载器；主要定义一些loaders,定义哪些后缀名的文件应该用哪些loader
+- test: 检测哪些文件需要此loader，是一个正则表达式
+- exclude: 忽略哪些文件
+- resolve: 定义能够被打包的文件，文件后缀名
+- plugins: 定义一些额外的插件
+
+示例用到的 Loaders
+- 处理样式：sass-loader、style-loader、css-loader，将 sass 转成 css
+- 图片处理，url-loader、file-loader、image-webpack-loader， 将图片转换成base64 或者 进行压缩
+- js处理： babel-loader，babel-preset-es2015，babel-preset-react，将es6或更高级的代码转成es5的代码
+
+Plugins
+- 代码热替换：HotModuleReplacementPlugin
+- 生成html文件：HtmlWebpackPlugin
+- 报错但不退出webpack进程：NoErrorsPlugin
+- 代码压缩：UglifyJsPlugin
+- 自动打开浏览器： OpenBrowserPlugin
+- 设置环境变量： DefinePlugin
 
 代码热替换：HotModuleReplacementPlugin
 生成html文件：HtmlWebpackPlugin
