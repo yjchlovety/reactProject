@@ -12,11 +12,9 @@
 ### Build Tool:
 >Webpack
 
-## 2.webpack 基础
+## webpack 基础
 
-### 2.1安装 webpack
-
-2.1安装 webpack
+### 安装 webpack
 
 作为全局变量安装
 ```js
@@ -29,7 +27,7 @@
  $ npm install webpack --save-dev
 ```
 
-### 2.2 webpack 简介
+### webpack 简介
 
 webpack 的配置项主要包括以下几点：
 - entry: 入口,定义要打包的文件
@@ -41,7 +39,7 @@ webpack 的配置项主要包括以下几点：
 - plugins: 定义一些额外的插件
 
 示例用到的 Loaders
-- 处理样式：sass-loader、style-loader、css-loader，将 sass 转成 css
+- 处理样式：less-loader、style-loader、css-loader，将 less 转成 css
 - 图片处理，url-loader、file-loader、image-webpack-loader， 将图片转换成base64 或者 进行压缩
 - js处理： babel-loader，babel-preset-es2015，babel-preset-react，将es6或更高级的代码转成es5的代码
 
@@ -54,7 +52,7 @@ Plugins
 - 设置环境变量： DefinePlugin
 
 
-### 2.3 使用 webpack-dev-server 启动服务器
+### 使用 webpack-dev-server 启动服务器
 - webpack.config.***.js: webpack常规配置，配置入口文件，输出文件，loaders等等
 - server.js: 将server部分分离到一个单独到的文件配置
 - package.json: 自定义启动命令
@@ -173,29 +171,80 @@ server.listen(port, "localhost", function (err) {
   },
 ```
 
-
-webpack-dev-server
---content-base <file/directory/url/port>：为内容的基本路径。
---quiet：不输出任何东西到控制台。
---no-info：抑制无聊的信息。
---colors：添加一些颜色到输出。
---no-colors：不要在输出时使用的颜色。
---compress：使用gzip压缩。
---host <hostname/ip>：主机名或IP 绑定到所有主机。0.0.0.0
---port <number>： 端口。
---inline：嵌入的WebPack-dev的服务器运行到包。
---hot：添加HotModuleReplacementPlugin和切换服务器热模式。注意：请确保您不添加HotModuleReplacementPlugin两次。
---hot --inline还增加了webpack/hot/dev-server条目。
---public：覆盖中使用的主机和端口--inline模式的客户端（虚拟机或泊坞窗有用）。
---lazy：没有鲸，编制要求（不能结合--hot）。
---https：提供的WebPack-DEV-服务器通过HTTPS协议。包括服务请求时使用自签名的证书。
---cert，--cacert，--key：路径的证书文件。
---open：将打开默认浏览器的URL（的WebPack-dev的服务器版本> 2.0）。
---history-api-fallback：启用历史API后备支持。
+## 配置 React, ES6 & Babel 6
+ES6 和 JSX 转换
+.babelrc 文件
+```js
+{
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy"
+  ]
+}
+```
+这里transform-decorators-legacy暂且用不到,是解析ES7语法的
 
 
-webpack-dashboard --
+## 使用 ESlint 进行代码检查
+特点:
+- 默认规则包含所有 JSLint、JSHint 中存在的规则，易迁移
+- 规则可配置性高：可设置「警告」、「错误」两个 error 等级，或者直接禁用
 
+
+.eslint配置文件常见的格式
+```js
+{
+  "parserOptions": { //EsLint通过parserOptions，允许指定校验的ecma的版本，及ecma的一些特性
+    "ecmaVersion": 6, //指定ECMAScript支持的版本，6为ES6
+    "sourceType": "module", //指定来源的类型，有两种”script”或”module”
+    "ecmaFeatures": { // ecmaFeatures指定你想使用哪些额外的语言特性
+        "jsx": true //启动JSX
+    }
+  },
+  "parser": "babel-eslint", // EsLint默认使用esprima做脚本解析，也可以切换成babel-eslint解析
+  "env": { // Environment可以预设好的其他环境的全局变量，如brower、node环境变量、es6环境变量、mocha环境变量等
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "plugins": [ // EsLint允许使用第三方插件
+    "react"
+  ],
+  extends: [ // Extends是EsLint默认推荐的验证你可以使用配置选择哪些校验是你所需要的
+    "eslint:recommended"
+  ],
+  rules: [ // 自定义规则
+  ],
+  "globals": { // 即插件在执行过程中用到的其它全局变量
+  }
+}
+
+```
+
+相关插件
+- babel-eslint: ESLint 是前端JS代码检测利器。而 babel-eslint 则允许你检测所有的 Babel 代码
+- eslint: JavaScript 语法检测利器：分析出你代码潜在的错误和非标准用法
+- eslint-plugin-react: ESLint 中关于 React 语法检测的插件
+
+[更多参考](http://eslint.org/docs/user-guide/configuring)
+
+
+
+## Configuration tasks/命令
+- npm start: 启动开发模式下的server
+- npm run build: 打包生产模式的代码
+- npm run lint:watch: eslint 监视
+
+
+## 参考
+[React官网](http://reactjs.cn/react/docs/getting-started.html)
+[【前端构建】WebPack实例与前端性能优化](https://segmentfault.com/a/1190000004577578)
+[React 入门实例教程](http://www.ruanyifeng.com/blog/2015/03/react.html)
 
 
 
