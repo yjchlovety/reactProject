@@ -1,5 +1,7 @@
 #React
 
+## 1. 技术选型
+
 ### JavaScript:
 
 >Language: ES6
@@ -10,6 +12,22 @@
 ### Build Tool:
 >Webpack
 
+## 2.webpack 基础
+
+### 2.1安装 webpack
+
+2.1安装 webpack
+
+作为全局变量安装
+```js
+ $ npm install -g webpack
+ $ webpack -v => webpack 1.13.2
+```
+
+作为项目依赖安装
+```js
+ $ npm install webpack --save-dev
+```
 
 
 代码热替换：HotModuleReplacementPlugin
