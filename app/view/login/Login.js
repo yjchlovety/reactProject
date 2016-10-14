@@ -4,14 +4,15 @@ import './login.css'
 import logo from '../../img/logo01.svg'
 import loginAction from '../../actions/LoginAction'
 import { connect } from 'react-redux'
+import { post } from '../../utils/api'
 
 const FormItem = Form.Item
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      username: 'admin',
-      password: '123456',
+      username: 'hycgjt',
+      password: '123456a',
       checked: true,
       date: ''
     }
@@ -36,10 +37,15 @@ class Login extends React.Component {
       password: this.state.password,
       token: 9876543210
     }
-    this.props.doLoginIn(user)
-    setTimeout(()=> {
-      this.context.router.push('/')
-    }, 1000)
+    post('/mock/login', user).then((res) => {
+      console.log(res)
+    }).catch(error => {
+      console.log('错误')
+    })
+    // this.props.doLoginIn(user)
+    // setTimeout(()=> {
+    //   this.context.router.push('/')
+    // }, 1000)
   }
 
   render () {

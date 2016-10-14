@@ -31,6 +31,10 @@ const config = {
         loaders: [ "style", "css?sourceMap" ]
       },
       {
+        test: /\.less$/,
+        loader: "style!css!less"
+      },
+      {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
         loaders: [
           'url?limit=10000&name=img/[hash:8].[name].[ext]', // 图片小于8k就转化为 base64, 或者单独作为文件
@@ -42,7 +46,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       favicon: './app/favicon.ico',
-      template: 'app/template.html',
+      template: './app/template.html',
       filename: 'index.html',
       inject: true,  //允许插件修改哪些内容，包括head与body
       hash: true,    //为静态资源生成hash值

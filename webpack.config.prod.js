@@ -12,7 +12,7 @@ const config = {
     publicPath: ''
   },
   resolve: {
-    extensions: [ '', '.js', '.jsx' ]
+    extensions: [ '', '.js', '.jsx']
   },
   module: {
     loaders: [
@@ -26,15 +26,19 @@ const config = {
         loaders: [ "style", "css" ]
       },
       {
+        test: /\.less$/,
+        loader: "style!css!less"
+      },
+      {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
           'url?limit=10000&name=[hash:8].[name].[ext]',
           'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
         ]
       }
-    ],
-    devtool: 'cheap-source-map'
+    ]
   },
+  devtool: false,
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -50,7 +54,7 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       favicon: './app/favicon.ico',
-      template: 'app/template.html',
+      template: './app/template.html',
       filename: 'index.html',
       inject: true,  //允许插件修改哪些内容，包括head与body
       hash: true,    //为静态资源生成hash值
