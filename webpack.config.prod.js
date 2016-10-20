@@ -9,7 +9,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, './build'),
     filename: '[chunkhash:8].bundle.js',
-    publicPath: ''
+    publicPath: '/'
   },
   resolve: {
     extensions: [ '', '.js', '.jsx']
