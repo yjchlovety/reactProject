@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <title>React商城</title>
+  <meta name="viewport"
+        content="
+        width=device-width,
+        initial-scale=1,
+        user-scalable=no,
+        minimum-scale=1,
+        maximum-scale=1">
+  <script type="text/javascript">
+    (function (win, doc) {
+      /**
+       * rem 响应式解决方案
+       * 基础宽度320,以 实际宽度/基础宽度 比例放缩
+       */
+      function setRootFontSize () {
+        let docWidth = doc.documentElement.getBoundingClientRect().width;
+        let scale = docWidth / 320
+        doc.documentElement.style.fontSize = scale * 100 + '%'
+      }
+
+      setRootFontSize();
+      win.addEventListener('resize', setRootFontSize, false);
+
+    })(window, document)
+  </script>
+</head>
+<body>
+<div id="app"></div>
+</body>
+
+</html>

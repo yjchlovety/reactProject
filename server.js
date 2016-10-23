@@ -6,6 +6,9 @@ const configBase = require('./config.base')
 const isDeveloping = process.env.NODE_ENV === 'development';
 const port = configBase.port;
 
+const ip = require('ip')
+const lostIp = ip.address()
+
 function baseConfig (config, contentBase) {
   return new webpackDevServer(webpack(config), {
       historyApiFallback: true, //启用历史API后备支持
@@ -16,11 +19,7 @@ function baseConfig (config, contentBase) {
       stats: { colors: true }, // 用颜色标识,
       proxy: {
         "/api/*": {
-          "target": {
-            "host": "goods.vip.dev.xkeshi.so",
-            "protocol": 'http:',
-            "port": 8082
-          },
+          "target": "http://goods.vip.prepub.xkeshi.net",
           ignorePath: true,
           changeOrigin: true,
           secure: false
@@ -32,13 +31,13 @@ function baseConfig (config, contentBase) {
 
 var server
 if (isDeveloping) {
-  server = baseConfig(devConfig, "/app");
+  server = baseConfig(devConfig, "/" + configBase.project);
   console.log("开发环境 development mode... ");
 }
 
-server.listen(port, "localhost", function (err) {
+server.listen(port, lostIp, function (err) {
   if (err) {
     console.log(err);
   }
-  console.log('------>服务启动中 Listening on ' + process.env.NODE_ENV + ' port ' + port + '<------');
+  console.log('------>服务启动中 ' + lostIp + ' on ' + process.env.NODE_ENV + ' port ' + port + '<------');
 });

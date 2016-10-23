@@ -4,16 +4,18 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const configBase = require('./config.base')
+const ip = require('ip')
+const lostIp = ip.address()
 const config = {
   entry: [
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:' + configBase.port,
-    path.resolve(__dirname, 'app/index.js')
+    'webpack-dev-server/client?http://' + lostIp + ':' + configBase.port,
+    path.resolve(__dirname, configBase.project + '/index.js')
   ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: 'http://localhost:' + configBase.port + '/' // 引用路径
+    publicPath: 'http://' + lostIp + ':' + configBase.port + '/' // 引用路径
   },
   resolve: {
     extensions: [ '', '.js', '.jsx' ]
@@ -45,8 +47,8 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      favicon: './app/favicon.ico',
-      template: './app/template.html',
+      favicon: configBase.project + '/favicon.ico',
+      template: configBase.project + '/template.html',
       filename: 'index.html',
       inject: true,  //允许插件修改哪些内容，包括head与body
       hash: true,    //为静态资源生成hash值
@@ -61,7 +63,7 @@ const config = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new OpenBrowserPlugin({ url: 'http://localhost:' + configBase.port }),
+    new OpenBrowserPlugin({ url: 'http://' + lostIp + ':' + configBase.port }),
     new DashboardPlugin()
   ]
 }
