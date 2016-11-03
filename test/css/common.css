@@ -70,10 +70,6 @@ input {
   clear: both
 }
 
-.hide {
-  display: none !important;
-}
-
 .ellipsis {
   word-break: normal;
   white-space: nowrap;
@@ -100,57 +96,8 @@ body, .bo_body {
   font-size: 16px;
 }
 
-/*css3弹性盒子模型样式定义*/
-.bo {
-  display: -webkit-box !important;
-  display: box !important;
-}
-
-.bo-ac {
-  -webkit-box-align: center;
-  box-align: center
-}
-
-.bo-ae {
-  -webkit-box-align: end;
-  box-align: end
-}
-
-.bo-pc {
-  -webkit-box-pack: center;
-  box-pack: center
-}
-
-.bo-pe {
-  -webkit-box-pack: end;
-  box-pack: end
-}
-
-.bo-ver {
-  box-orient: vertical;
-  -webkit-box-orient: vertical
-}
-
-.bo-f1 {
-  position: relative;
-  -webkit-box-flex: 1;
-  box-flex: 1
-}
-
-.bo-f2 {
-  position: relative;
-  -webkit-box-flex: 2;
-  box-flex: 2
-}
-
-.bo-f3 {
-  position: relative;
-  -webkit-box-flex: 3;
-  box-flex: 3
-}
-
-.bo-f4 {
-  position: relative;
-  -webkit-box-flex: 4;
-  box-flex: 4
+@media screen and (min-width: 320px) {
+  html {
+    /*font-size: 150important*/
+  }
 }

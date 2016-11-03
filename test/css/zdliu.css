@@ -1,0 +1,217 @@
+a, a:hover {
+  text-decoration: none
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+  font-size: 1rem;
+}
+
+input {
+  border: 0
+}
+
+mark {
+  background: #ff0
+}
+
+blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul {
+  margin: 0;
+  padding: 0
+}
+
+body, button, input, select, textarea {
+  font-family: arial, 'Microsoft YaHei', sans-serif !important
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%
+}
+
+address, cite, dfn, em, var {
+  font-style: normal
+}
+
+code, kbd, pre, samp {
+  font-family: courier new, courier, monospace
+}
+
+ol, ul {
+  list-style: none
+}
+
+sup {
+  vertical-align: text-top
+}
+
+sub {
+  vertical-align: text-bottom;
+  position: absolute
+}
+
+legend {
+  color: #000
+}
+
+fieldset, img {
+  border: 0
+}
+
+html {
+  font-size: 100% !important
+}
+
+body {
+  font-size: 1em !important;
+  background-color: #fff;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+article, aside, audio, details, figcaption, figure, footer, header, mark, menu, nav, section, summary, time, video {
+  display: block;
+  margin: 0;
+  padding: 0
+}
+
+.p {
+  cursor: pointer
+}
+
+.clear {
+  clear: both
+}
+
+.ellipsis {
+  word-break: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.nowrap {
+  overflow: hidden;
+  white-space: nowrap
+}
+
+input {
+  outline: 0
+}
+
+@media screen and (min-width: 30em) {
+  body {
+    font-size: 1.5em !important
+  }
+
+  html {
+    font-size: 150% !important
+  }
+}
+
+@media screen and (min-width: 45em) {
+  body {
+    font-size: 2em !important
+  }
+
+  html {
+    font-size: 200% !important
+  }
+}
+
+@media screen and (min-width: 60em) {
+  body {
+    font-size: 2.5em !important
+  }
+
+  html {
+    font-size: 250% !important
+  }
+}
+
+@media screen and (min-width: 75em) {
+  body {
+    font-size: 3em !important
+  }
+
+  html {
+    font-size: 300% !important
+  }
+}
+
+/*css3弹性盒子*/
+.ub {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box
+}
+
+.ub-ac {
+  -webkit-box-align: center;
+  box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center
+}
+
+.ub-ae {
+  -webkit-box-align: end;
+  box-align: end;
+  -moz-box-align: end;
+  -o-box-align: end
+}
+
+.ub-pc {
+  -webkit-box-pack: center;
+  box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center
+}
+
+.ub-pe {
+  -webkit-box-pack: end;
+  box-pack: end;
+  -moz-box-pack: end;
+  -o-box-pack: end
+}
+
+.ub-ver {
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical
+}
+
+.ub-f1 {
+  position: relative;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1
+}
+
+.ub-f2 {
+  position: relative;
+  -webkit-box-flex: 2;
+  box-flex: 2;
+  -moz-box-flex: 2;
+  -o-box-flex: 2
+}
+
+.ub-f3 {
+  position: relative;
+  -webkit-box-flex: 3;
+  box-flex: 3;
+  -moz-box-flex: 3;
+  -o-box-flex: 3
+}
+
+.ub-f4 {
+  position: relative;
+  -webkit-box-flex: 4;
+  box-flex: 4;
+  -moz-box-flex: 4;
+  -o-box-flex: 4
+}

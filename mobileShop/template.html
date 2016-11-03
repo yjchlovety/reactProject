@@ -2,7 +2,7 @@
 <html lang="cn">
 <head>
   <meta charset="UTF-8">
-  <title>React商城</title>
+  <title>论坛</title>
   <meta name="viewport"
         content="
         width=device-width,
@@ -14,11 +14,11 @@
     (function (win, doc) {
       /**
        * rem 响应式解决方案
-       * 基础宽度320,以 实际宽度/基础宽度 比例放缩
+       * 基础宽度375,以 实际宽度/基础宽度 比例放缩
        */
       function setRootFontSize () {
         let docWidth = doc.documentElement.getBoundingClientRect().width;
-        let scale = docWidth / 320
+        let scale = docWidth / 375
         doc.documentElement.style.fontSize = scale * 100 + '%'
       }
 

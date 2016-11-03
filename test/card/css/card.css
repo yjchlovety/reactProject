@@ -1,0 +1,291 @@
+
+body {
+  background-color: #f3f3f3;
+}
+
+.card-top {
+  height: 1.875rem;
+  background-color: #343434;
+  padding: 0.4375rem 0.625rem;
+}
+
+.card-top .img-location {
+  width: 1.0625rem;
+  height: 1.25rem;
+  margin-right: 0.875rem;
+  margin-top: 0.3125rem;
+  display: block;
+}
+
+.card-top .top-search {
+  height: 1.0625rem;
+  position: relative;
+  border-radius: 0.3125rem;
+  background-color: #000;
+  padding: 0.3125rem 0.3125rem 0.3125rem 1.75rem;
+}
+
+.card-top .input-search {
+  display: block;
+  width: 100%;
+  height: 1.25rem;
+  background: transparent;
+  font-size: 0.875rem;
+  color: #707071;
+}
+
+.card-top .img-search {
+  position: absolute;
+  width: 0.875rem;
+  height: 0.875rem;
+  left: 0.5625rem;
+  top: 0.5rem;
+  display: block;
+}
+
+.card-top .img-user {
+  display: block;
+  width: 1.1875rem;
+  height: 1.25rem;
+  margin-top: 0.3125rem;
+  margin-left: 0.625rem;
+}
+
+.card-ddv {
+  margin-bottom: 0.625rem;
+  background-color: #fff;
+  border-bottom: 0.0625rem solid #e4e4e4;
+  border-top: 0.0625rem solid #e4e4e4;
+}
+
+.ddv-first {
+  border-top: 0;
+}
+
+.card-banner {
+  height: 9.375rem;
+  background-color: #666666;
+}
+
+.card-column {
+  height: 5.125rem;
+  padding: 1.25rem 0.3125rem;
+  background-color: #fff;
+}
+
+.card-column li {
+  width: 25%;
+  text-align: center;
+}
+
+.card-column li img {
+  display: block;
+  margin: 0 auto 0.5rem;
+  width: 3.75rem;
+}
+
+.card-column li span {
+  font-size: 0.875rem;
+  color: #343434;
+}
+
+.card-notice {
+  height: 3rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  border-bottom: 0.0625rem solid #f3f3f3;
+}
+
+.card-notice .img-activity {
+  width: 4.5rem;
+  height: 2.95rem;
+  display: block;
+  margin: 0 0.625rem;
+}
+
+.card-notice .img-go {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+  margin: 1rem 0.625rem;
+}
+
+.card-notice .notice-ul {
+  height: 3rem;
+  overflow: hidden;
+}
+
+.card-notice .notice-ul li {
+  height: 3rem;
+  line-height: 3rem;
+  color: #c0984c;
+}
+
+.card-sale {
+  height: 3.875rem;
+}
+
+.card-sale hr {
+  width: 3.125rem;
+}
+
+.card-sale .img-recommend {
+  display: block;
+  width: 1.3125rem;
+  height: 0.9375rem;
+  margin-left: 1.625rem;
+  margin-right: 0.625rem;
+}
+
+.card-sale .img-ticket {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-left: 1.625rem;
+  margin-right: 0.625rem;
+}
+
+.card-sale span {
+  font-size: 1rem;
+  color: #222;
+  margin-right: 1.625rem;
+}
+
+.card-shop {
+  height: 6.25rem;
+  padding-bottom: 1.5625rem;
+}
+
+.card-shop .img-shop {
+  background-color: #e0e0e0;
+  height: 6.25rem;
+  border: 0;
+  width: 100%;
+}
+
+.card-shop .shop-ddv {
+  width: 0.625rem;
+}
+
+.card-shop .shop-info {
+  width: 50%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.card-shop .shop-info:first-child {
+  padding-right: 0.3125rem;
+}
+
+.card-shop .shop-info:last-child {
+  padding-left: 0.3125rem;
+}
+
+.card-shop .img-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.card-shop .img-imgbg {
+  width: 4.8125rem;
+  display: block;
+  height: 4.8125rem;
+}
+
+.card-shop .shop-words {
+  position: absolute;
+  width: 100%;
+  top: 1.5rem;
+  text-align: center;
+  left: 0;
+  z-index: 2;
+}
+
+.card-shop .shop-words h2 {
+  color: #222;
+  font-size: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.card-shop .shop-words span {
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.card-list {
+  background-color: #fff;
+  border-top: 0.0625rem solid #e4e4e4;
+}
+
+.card-coupon {
+  padding: 0 0.625rem;
+}
+
+.card-coupon li {
+  position: relative;
+  padding-bottom: 0.625rem;
+  height: 6.25rem;
+}
+
+.card-coupon li .img-coupon {
+  height: 6.25rem;
+  background-color: #fff;
+  width: 100%;
+  display: block;
+}
+
+.card-coupon li .coupon-words {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2.825rem;
+  border-left: 0.125rem solid #e4e4e4;
+  margin-top: -1.4125rem;
+  box-sizing: border-box;
+  padding-right: 2rem;
+  padding-left: 1rem;
+  z-index: 2;
+}
+
+.coupon-words span {
+  color: #999;
+  font-size: 1rem;
+  padding-bottom: 0.25rem;
+  display: block;
+}
+
+.coupon-words h2 {
+  font-size: 1rem;
+  color: #333;
+}
+
+.card-coupon li .coupon-prise {
+  position: absolute;
+  z-index: 2;
+  height: 1.875rem;
+  line-height: 1.875rem;
+  font-size: 1rem;
+  text-align: center;
+  right: 0;
+  top: 50%;
+  margin-top: -0.9375rem;
+  width: 4.7rem;
+  color: #fff;
+  background-color: #c0984c;
+}
+
+
+
+
+
+
+
+
+
+
+

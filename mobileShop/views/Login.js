@@ -1,33 +1,89 @@
 import React from 'react'
+import Footer from './Footer'
+import '../css/login.less'
+import loginImg from '../img/img-login.jpg'
+import uUser from '../img/u-user.png'
+import uPassWord from '../img/u-password.png'
+import email from '../img/email.png'
 
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      username: 'hycgjt',
-      password: '123456a',
-      checked: true,
-      date: ''
+      isLogin: true
     }
   }
 
-  render () {
-    let style = {
-      width: '100%',
-      height: '10rem',
-      background: '#999'
-    }
-    return (
-      <div className="login">
-        <div>测试 测试</div>
-        <h1>111</h1>
-        <h2>2222</h2>
-        <h3>333</h3>
-        <h4>444</h4>
-        <h5>555</h5>
-        <h6>666</h6>
+  getLoginInShow () {
 
-        <div style={ style }></div>
+  }
+
+  tabClick (n) {
+    this.setState("isLogin", n === 1)
+  }
+
+  loginInShow () {
+
+  }
+
+  loginUpShow () {
+
+  }
+
+  render () {
+    let divStyle = {
+      display: this.state ? 'none' : 'block',
+    };
+    return (
+      <div className="bo bo-f1 bo-ver">
+        <header className="login-header">
+          <img className="img-login" src={loginImg}/>
+          <div className="login-word bo bo-pc bo-ver">
+            <h2>Sign Up</h2>
+            <p>Beautifully crafted UI Kit for you</p>
+          </div>
+        </header>
+        <nav className="nav-login bo">
+          <a onClick={this.tabClick.bind(1, this)} className="nav-lga">Sign In</a>
+          <a onClick={this.tabClick.bind(2, this)}>Sign Up</a>
+        </nav>
+        <div className="login-warp bo-f1">
+          <div className="warp-login-in" style={divStyle}>
+            <div className="login-ddv bo ">
+              <img className="img-login-icon" src={uUser}/>
+              <div className="login-input bo-f1">
+                <input className="input-blog" placeholder="username"/>
+              </div>
+            </div>
+            <div className="login-ddv bo">
+              <img className="img-login-icon" src={uPassWord}/>
+              <div className="login-input bo-f1">
+                <input className="input-blog" placeholder="Password"/>
+              </div>
+            </div>
+          </div>
+          <div className="warp-login-up">
+            <div className="login-ddv bo ">
+              <img className="img-login-icon" src={uUser}/>
+              <div className="login-input bo-f1">
+                <input className="input-blog" placeholder="username"/>
+              </div>
+            </div>
+            <div className="login-ddv bo ">
+              <img className="img-login-icon" src={email}/>
+              <div className="login-input bo-f1">
+                <input className="input-blog" placeholder="email"/>
+              </div>
+            </div>
+            <div className="login-ddv bo">
+              <img className="img-login-icon" src={uPassWord}/>
+              <div className="login-input bo-f1">
+                <input className="input-blog" placeholder="Password"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Footer/>
       </div>
     )
   }

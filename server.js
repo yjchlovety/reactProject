@@ -32,7 +32,7 @@ function baseConfig (config, contentBase) {
 var server
 if (isDeveloping) {
   server = baseConfig(devConfig, "/" + configBase.project);
-  console.log("开发环境 development mode... ");
+  console.log("开发环境 development mode... " + '项目 ' + configBase.project);
 }
 
 server.listen(port, lostIp, function (err) {
