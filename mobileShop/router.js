@@ -11,7 +11,7 @@ import Views from './views/Views'
 import viewRouter from './views/router'
 // import createBrowserHistory from 'history/lib/createBrowserHistory'
 
-let history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
+const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
 
 class router extends React.Component {
   constructor (props) {

@@ -18,8 +18,8 @@ class Login extends React.Component {
 
   }
 
-  tabClick (n) {
-    this.setState("isLogin", n === 1)
+  tabClick () {
+    this.setState("isLogin", false)
   }
 
   loginInShow () {
@@ -44,8 +44,8 @@ class Login extends React.Component {
           </div>
         </header>
         <nav className="nav-login bo">
-          <a onClick={this.tabClick.bind(1, this)} className="nav-lga">Sign In</a>
-          <a onClick={this.tabClick.bind(2, this)}>Sign Up</a>
+          <a onClick={this.tabClick.bind(this)} className="nav-lga">Sign In</a>
+          <a onClick={this.tabClick.bind(this)}>Sign Up</a>
         </nav>
         <div className="login-warp bo-f1">
           <div className="warp-login-in" style={divStyle}>
