@@ -9,7 +9,6 @@ import App from './app'
 import Login from './views/Login'
 import Views from './views/Views'
 import viewRouter from './views/router'
-// import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
 

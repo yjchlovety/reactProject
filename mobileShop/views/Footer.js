@@ -7,10 +7,11 @@ class Footer extends React.Component {
 
   render () {
     return (
-      <footer className="blog-footer">
-        <span>©2016&nbsp;React&nbsp;</span>
-        <span>QQ:&nbsp;335758663</span>
-        <span>新浪微博:&nbsp;不知道起什么名字好1223</span>
+      <footer className="blog_footer">
+        <span>Github:&nbsp;
+          <a target="_blank" href="https://github.com/zdliuccit">https://github.com/zdliuccit</a>
+        </span>
+        <span>&nbsp;&nbsp;©2016&nbsp;React</span>
       </footer>
     )
   }

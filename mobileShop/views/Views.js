@@ -9,9 +9,9 @@ class Views extends React.Component {
     return (
       <div className="bo bo-ver bo-f1">
         <div className="bo-f1"></div>
-        <div className="footer-warp">
-          <ul className="footer-menu">
-            <li className="menu-li">
+        <div className="footer_warp">
+          <ul className="footer_menu">
+            <li className="menu_li">
               <i/>
               <span>首页</span>
             </li>
@@ -20,7 +20,7 @@ class Views extends React.Component {
               <span>热门</span>
             </li>
             <li>
-              <i className="middle-add"/>
+              <i className="middle_add"/>
               <span>添加</span>
             </li>
             <li>

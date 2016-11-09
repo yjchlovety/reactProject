@@ -1,86 +1,97 @@
 import React from 'react'
 import Footer from './Footer'
 import '../css/login.less'
-import loginImg from '../img/img-login.jpg'
-import uUser from '../img/u-user.png'
-import uPassWord from '../img/u-password.png'
-import email from '../img/email.png'
 
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      isLogin: true
+      title: '登陆',
+      isLogin: true,
+      opacity: 11,
+      userName: '',
+      passWord: '',
+      email: ''
     }
   }
 
-  getLoginInShow () {
+  tabClick (v) {
+    this.setState({ isLogin: v })
+  }
+
+  loginInOrUp (v) {
+    if (v) {
+      return { display: "block" }
+    }
+    return { display: "none" }
+  }
+
+  cgUserName (e) {
+    this.setState({ userName: e.target.value })
+  }
+
+  cgPassWord (e) {
+    this.setState({ passWord: e.target.value })
+  }
+
+  cgEmail (e) {
+    this.setState({ email: e.target.value })
+  }
+
+  doLoginIn () {
 
   }
 
-  tabClick () {
-    this.setState("isLogin", false)
-  }
-
-  loginInShow () {
+  doLoginUp () {
 
   }
 
-  loginUpShow () {
-
+  componentWillMount () {
+    window.document.title = this.state.title
   }
 
   render () {
-    let divStyle = {
-      display: this.state ? 'none' : 'block',
-    };
     return (
-      <div className="bo bo-f1 bo-ver">
-        <header className="login-header">
-          <img className="img-login" src={loginImg}/>
-          <div className="login-word bo bo-pc bo-ver">
+      <div className="bo bo-f1 bo-ver login">
+        <header className="login_header">
+          <div className="login_word bo bo-pc bo-ver">
             <h2>Sign Up</h2>
             <p>Beautifully crafted UI Kit for you</p>
           </div>
         </header>
-        <nav className="nav-login bo">
-          <a onClick={this.tabClick.bind(this)} className="nav-lga">Sign In</a>
-          <a onClick={this.tabClick.bind(this)}>Sign Up</a>
+        <nav className="nav_login bo">
+          <a onClick={this.tabClick.bind(this, true)} className={this.state.isLogin ? "nav_lga" : ""}>
+            Sign In<span/>
+          </a>
+          <a onClick={this.tabClick.bind(this, false)} className={this.state.isLogin ? "" : "nav_lga" }>
+            Sign Up<span/>
+          </a>
         </nav>
-        <div className="login-warp bo-f1">
-          <div className="warp-login-in" style={divStyle}>
-            <div className="login-ddv bo ">
-              <img className="img-login-icon" src={uUser}/>
-              <div className="login-input bo-f1">
-                <input className="input-blog" placeholder="username"/>
+        <div className="login_warp bo-f1">
+          <div className="warp_login_in">
+            <div className="login_ddv bo ">
+              <i className="img_ii icon_user"/>
+              <div className="login_input bo-f1">
+                <input className=" input_blog" placeholder="username" type="number"
+                       onChange={this.cgUserName.bind(this)} value={this.state.userName}
+                />
               </div>
             </div>
-            <div className="login-ddv bo">
-              <img className="img-login-icon" src={uPassWord}/>
-              <div className="login-input bo-f1">
-                <input className="input-blog" placeholder="Password"/>
+            <div className="login_ddv bo">
+              <i className="img_ii icon_psd"/>
+              <div className="login_input bo-f1">
+                <input className="input_blog" placeholder="password" type="password"
+                       onChange={this.cgPassWord.bind(this)} value={this.state.passWord}/>
               </div>
             </div>
-          </div>
-          <div className="warp-login-up">
-            <div className="login-ddv bo ">
-              <img className="img-login-icon" src={uUser}/>
-              <div className="login-input bo-f1">
-                <input className="input-blog" placeholder="username"/>
+            <div className="login_ddv " style={this.loginInOrUp(!this.state.isLogin)}>
+              <i className="img_ii icon_email"/>
+              <div className="login_input bo-f1">
+                <input className="input_blog" placeholder="email" type="number"
+                       onChange={this.cgEmail.bind(this)} value={this.state.email}/>
               </div>
             </div>
-            <div className="login-ddv bo ">
-              <img className="img-login-icon" src={email}/>
-              <div className="login-input bo-f1">
-                <input className="input-blog" placeholder="email"/>
-              </div>
-            </div>
-            <div className="login-ddv bo">
-              <img className="img-login-icon" src={uPassWord}/>
-              <div className="login-input bo-f1">
-                <input className="input-blog" placeholder="Password"/>
-              </div>
-            </div>
+            <div className="login_ddv"></div>
           </div>
         </div>
         <Footer/>
