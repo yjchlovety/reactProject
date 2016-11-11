@@ -11,8 +11,9 @@ a, a:hover {
   text-decoration: none
 }
 
-input, fieldset, img {
-  border: 0
+input, fieldset, img, button, select {
+  border: 0;
+  outline: none;
 }
 
 mark {

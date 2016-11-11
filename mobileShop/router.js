@@ -9,6 +9,7 @@ import App from './app'
 import Login from './views/Login'
 import Views from './views/Views'
 import viewRouter from './views/router'
+import Icons from './components/Icons'
 
 const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
 
@@ -29,6 +30,7 @@ class router extends React.Component {
         <Router history={history}>
           <Route component={App}>
             <Route path="login" component={Login}/>
+            <Route path="icon" component={Icons}/>
             <Route path="/" component={Views} onEnter={this.checkLogin}>
               {viewRouter}
             </Route>

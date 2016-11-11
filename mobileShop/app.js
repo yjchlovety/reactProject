@@ -1,6 +1,6 @@
 import React from 'react'
 import './css/common.css'
-import './css/base.less'
+import './css/font/iconfont.css'
 import './css/blog.less'
 
 class App extends React.Component {

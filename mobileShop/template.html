@@ -19,8 +19,6 @@
       function setRootFontSize () {
         let docWidth = doc.documentElement.getBoundingClientRect().width;
         let scale = docWidth / 375
-        console.log(docWidth)
-        console.log(doc.documentElement.clientWidth)
         scale > 2 ? scale = 1 : ''
         doc.documentElement.style.fontSize = scale * 100 + '%'
       }

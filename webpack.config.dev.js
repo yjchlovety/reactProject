@@ -33,6 +33,10 @@ const config = {
         loaders: [ "style", "css?sourceMap" ]
       },
       {
+        test: /\.(woff|woff2|eot|ttf)$/i,
+        loader: "file-loader?name=fonts/[name]-[hash].[ext]"
+      },
+      {
         test: /\.less$/,
         loader: "style!css!less"
       },
