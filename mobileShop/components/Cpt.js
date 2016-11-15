@@ -4,8 +4,10 @@
 
 import Button from './Button'
 import Loading from './Loading'
+import Notify from './Notify'
 
 export {
   Button,
-  Loading
+  Loading,
+  Notify,
 }
