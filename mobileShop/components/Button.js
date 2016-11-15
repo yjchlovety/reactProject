@@ -2,6 +2,7 @@
  * Created by liuzhengdong on 2016/11/10.
  */
 import React from 'react'
+import PureRenderMixin from 'rc-util/lib/PureRenderMixin'
 import classNames from 'classnames'
 import './less/button.less'
 
@@ -14,6 +15,10 @@ class Button extends React.Component {
       clicked: false,
       activeClick: null
     };
+  }
+
+  shouldComponentUpdate (...args) {
+    return PureRenderMixin.shouldComponentUpdate.apply(this, args);
   }
 
   doClick (e) {

@@ -1,13 +1,15 @@
 import React from 'react'
 import Footer from './Footer'
 import '../css/login.less'
-import { Button } from '../components/Cpt'
+import { Button, Loading } from '../components/Cpt'
 
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       title: '登陆',
+      loading: false,
+      loadWords: '正在加载...',
       isLogin: true,
       opacity: 11,
       userName: '',
@@ -18,9 +20,13 @@ class Login extends React.Component {
 
   tabClick (v) {
     if (v) {
-      this.setState({ isLogin: v, title: '登陆', imgWord: 'Sign In' })
+      this.setState({ isLogin: v, title: '登陆', imgWord: 'Sign In' }, ()=> {
+        this.setDocTitle()
+      })
     } else {
-      this.setState({ isLogin: v, title: '注册', imgWord: 'Sign Up' })
+      this.setState({ isLogin: v, title: '注册', imgWord: 'Sign Up' }, () => {
+        this.setDocTitle()
+      })
     }
   }
 
@@ -34,10 +40,19 @@ class Login extends React.Component {
 
   doLoginIn () {
     console.log('点击登陆了')
+    this.setState({ loading: true, loadWords: '正在登陆...' })
+    setTimeout(()=> {
+      this.setState({ loading: false })
+    }, 1000)
+
   }
 
   doLoginUp () {
     console.log('点击注册了')
+    this.setState({ loading: true, loadWords: '正在注册...' })
+    setTimeout(()=> {
+      this.setState({ loading: false })
+    }, 1000)
   }
 
   doBtnClick () {
@@ -48,13 +63,19 @@ class Login extends React.Component {
     }
   }
 
-  componentWillMount () {
+  setDocTitle () {
     window.document.title = this.state.title
+
+  }
+
+  componentWillMount () {
+    this.setDocTitle()
   }
 
   render () {
     return (
       <div className="bo bo-f1 bo-ver login">
+        <Loading loadWords={this.state.loadWords} state={this.state.loading}/>
         <header className="login_header">
           <div className="login_word bo bo-pc bo-ver">
             <h2>{this.state.imgWord}</h2>
@@ -71,17 +92,17 @@ class Login extends React.Component {
         </nav>
         <div className="login_warp bo-f1">
           <div className="warp_login_in">
-            <div className="login_ddv bo ">
+            <div className="login_ddv ">
               <i className="img_ii icon_user"/>
-              <div className="login_input bo-f1">
+              <div className="login_input">
                 <input maxLength="11" className=" input_blog" placeholder="手机号码" type="tel"
                        onChange={this.cgUserName.bind(this)} value={this.state.userName}
                 />
               </div>
             </div>
-            <div className="login_ddv bo">
+            <div className="login_ddv">
               <i className="img_ii icon_psd"/>
-              <div className="login_input bo-f1">
+              <div className="login_input">
                 <input maxLength="30" className="input_blog" placeholder="密码" type="password"
                        onChange={this.cgPassWord.bind(this)} value={this.state.passWord}/>
               </div>
