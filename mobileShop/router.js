@@ -10,6 +10,7 @@ import Login from './views/Login'
 import Views from './views/Views'
 import viewRouter from './views/router'
 import Icons from './components/Icons'
+import storage from './utils/storage'
 
 const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHistory;
 
@@ -19,7 +20,8 @@ class router extends React.Component {
   }
 
   checkLogin (next, replace) {
-    if (!Store.getState().loginReducer.token) {
+    console.log(storage.getItemJson('user'))
+    if (!Store.getState().loginReducer.token && !storage.getItemJson('user').token) {
       replace('/login');
     }
   }

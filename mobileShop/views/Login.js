@@ -1,7 +1,9 @@
 import React from 'react'
 import Footer from './Footer'
+import { connect } from 'react-redux'
 import '../css/login.less'
 import { Button, Loading, Notify } from '../components/Cpt'
+import loginAction from '../actions/LoginAction'
 
 class Login extends React.Component {
   constructor (props) {
@@ -13,8 +15,8 @@ class Login extends React.Component {
       notify: '错误提示',
       isLogin: true,
       opacity: 11,
-      userName: '',
-      passWord: '',
+      username: 'admin',
+      password: '123456',
       imgWord: 'Sign In'
     }
   }
@@ -32,18 +34,28 @@ class Login extends React.Component {
   }
 
   cgUserName (e) {
-    this.setState({ userName: e.target.value })
+    this.setState({ username: e.target.value })
   }
 
   cgPassWord (e) {
-    this.setState({ passWord: e.target.value })
+    this.setState({ password: e.target.value })
   }
 
   doLoginIn () {
+    if (!this.state.username || !this.state.password) {
+      Notify.notice({ title: '手机号/密码不能为空' })
+      return
+    }
     this.setState({ loading: true, loadWords: '正在登陆...' })
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+      token: Math.floor(Math.random() * 10000000000)
+    }
+    this.props.doLoginIn(user)
     setTimeout(() => {
       this.setState({ loading: false })
-      Notify.notice({ title: '登陆出错了' })
+      this.context.router.push('/')
     }, 1000)
   }
 
@@ -100,7 +112,7 @@ class Login extends React.Component {
               <i className="img_ii icon_user"/>
               <div className="login_input">
                 <input maxLength="11" className=" input_blog" placeholder="手机号码" type="tel"
-                       onChange={this.cgUserName.bind(this)} value={this.state.userName}
+                       onChange={this.cgUserName.bind(this)} value={this.state.username}
                 />
               </div>
             </div>
@@ -108,7 +120,7 @@ class Login extends React.Component {
               <i className="img_ii icon_psd"/>
               <div className="login_input">
                 <input maxLength="30" className="input_blog" placeholder="密码" type="password"
-                       onChange={this.cgPassWord.bind(this)} value={this.state.passWord}/>
+                       onChange={this.cgPassWord.bind(this)} value={this.state.password}/>
               </div>
             </div>
             <div className="btn_login">
@@ -121,5 +133,15 @@ class Login extends React.Component {
     )
   }
 }
+Login.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
-export default Login;
+// 基于全局 state ，哪些是我们想注入的 props ?
+function mapStateToProps (state) {
+  return {
+    user: state.loginReducer
+  };
+}
+
+export default connect(mapStateToProps, loginAction)(Login);

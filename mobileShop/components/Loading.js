@@ -1,7 +1,6 @@
 /**
  * Created by liuzhengdong on 2016/11/13.
  */
-
 import React from 'react'
 import PureRenderMixin from 'rc-util/lib/PureRenderMixin'
 import './less/loading.less'

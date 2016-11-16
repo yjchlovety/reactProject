@@ -19,7 +19,7 @@ Notify.notice = (arg) => {
     props.onClose && props.onClose()
     ReactDOM.unmountComponentAtNode(div);
     document.body.removeChild(div);
-  }, props.time || 3000)
+  }, props.time || 2000)
 }
 Notify.confirm = (arg) => {
   const props = arg || {};
