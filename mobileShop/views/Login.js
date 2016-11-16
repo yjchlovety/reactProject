@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from './Footer'
 import '../css/login.less'
-import { Button, Loading } from '../components/Cpt'
+import { Button, Loading, Notify } from '../components/Cpt'
 
 class Login extends React.Component {
   constructor (props) {
@@ -10,6 +10,7 @@ class Login extends React.Component {
       title: '登陆',
       loading: false,
       loadWords: '正在加载...',
+      notify: '错误提示',
       isLogin: true,
       opacity: 11,
       userName: '',
@@ -20,7 +21,7 @@ class Login extends React.Component {
 
   tabClick (v) {
     if (v) {
-      this.setState({ isLogin: v, title: '登陆', imgWord: 'Sign In' }, ()=> {
+      this.setState({ isLogin: v, title: '登陆', imgWord: 'Sign In' }, () => {
         this.setDocTitle()
       })
     } else {
@@ -39,19 +40,22 @@ class Login extends React.Component {
   }
 
   doLoginIn () {
-    console.log('点击登陆了')
     this.setState({ loading: true, loadWords: '正在登陆...' })
-    setTimeout(()=> {
+    setTimeout(() => {
       this.setState({ loading: false })
+      Notify.notice({ title: '登陆出错了' })
     }, 1000)
-
   }
 
   doLoginUp () {
-    console.log('点击注册了')
     this.setState({ loading: true, loadWords: '正在注册...' })
-    setTimeout(()=> {
+    setTimeout(() => {
       this.setState({ loading: false })
+      Notify.confirm({
+        title: '你确定要注册嘛！', onClose: () => {
+          console.log(222)
+        }
+      })
     }, 1000)
   }
 

@@ -2,34 +2,34 @@
  * Created by liuzhengdong on 2016/11/14.
  */
 import React from 'react'
-import PureRenderMixin from 'rc-util/lib/PureRenderMixin'
+import ReactDOM from 'react-dom'
+import Notice from './Notice'
+import Confirm from './Confirm'
 
-class Notify extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
-
-  shouldComponentUpdate (...args) {
-    return PureRenderMixin.shouldComponentUpdate.apply(this, args);
-  }
-
-  timing
-
-  render () {
-    const props = { ...this.props };
-    return (
-      <div className="zd_notify">{props.title}</div>
-    )
-  }
+const Notify = () => {
 }
-Notify.propTypes = {
-  title: React.PropTypes.string,
-  onClose: React.PropTypes.bool
+Notify.notice = (arg) => {
+  const props = arg || {};
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  ReactDOM.render(<Notice {...props} />, div);
+  div.children[ 0 ].style.marginLeft = -div.children[ 0 ].clientWidth / 2 + 'px'
+  div.children[ 0 ].style.marginTop = -div.children[ 0 ].clientHeight / 2 + 'px'
+  const timing = setTimeout(() => {
+    props.onClose && props.onClose()
+    ReactDOM.unmountComponentAtNode(div);
+    document.body.removeChild(div);
+  }, props.time || 3000)
 }
-Notify.defaultProps = {
-  title: '提示信息',
-  onClose: () => {
-  }
+Notify.confirm = (arg) => {
+  const props = arg || {};
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  ReactDOM.render(<Confirm {...props} onClick={() => {
+    setTimeout(() => {
+      ReactDOM.unmountComponentAtNode(div);
+      document.body.removeChild(div);
+    }, 100)
+  }}/>, div);
 }
 export default Notify

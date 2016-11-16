@@ -76,6 +76,10 @@ input {
   display: none !important;
 }
 
+.inline {
+  display: inline-block !important;
+}
+
 .ellipsis {
   word-break: normal;
   white-space: nowrap;

@@ -30,7 +30,7 @@ class Button extends React.Component {
       clicked: true,
       activeClick: setTimeout(() => {
         this.setState({ clicked: false, activeClick: null })
-      }, 100)
+      }, 80)
     })
     this.props.onClick({
       stopPropagation() {
@@ -50,7 +50,8 @@ class Button extends React.Component {
       [`${props.className}`]: !!props.className,
       [`zd_btn_${props.size}`]: props.size,
       ['zd_btn_clicked']: state.clicked,
-      ['zd_btn_disabled']: props.disabled
+      ['zd_btn_disabled']: props.disabled,
+      ['inline']: props.inline,
     });
     return (
       <button

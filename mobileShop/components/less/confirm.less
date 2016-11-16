@@ -1,0 +1,65 @@
+.zd_confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  .zd_confirm_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .zd_confirm_warp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 220px;
+    height: 130px;
+    margin: -65px 0 0 -110px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 2;
+    .zd_confirm_title {
+      line-height: 30px;
+      height: 30px;
+      color: #666;
+      font-size: 14px;
+      margin: 0 8px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .zd_confirm_word {
+      padding: 10px 20px 0;
+      margin-bottom: 10px;
+      height: 48px;
+      word-break: break-all;
+      overflow: hidden;
+      line-height: 24px;
+      color: #444;
+    }
+    .zd_confirm_btn {
+      height: 46px;
+      .btn_ddv {
+        width: 50%;
+        height: 46px;
+        float: left;
+        .btn_confirm {
+          border-radius: 0;
+        }
+      }
+      .btn_ddv:first-child {
+        .btn_confirm {
+          background-color: #fff;
+          color: #666;
+          border-top: 1px solid #e0e0e0;
+        }
+      }
+    }
+  }
+}
