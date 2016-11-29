@@ -8,7 +8,7 @@
     "start": "export NODE_ENV=development &&  node server.js && npm run lint:watch",
     "build": "rm -r -f build && mkdir build && NODE_ENV=production && webpack -p --config webpack.config.prod.js --progress --colors",
     "lint:watch": "eslint --ext .js",
-    "check": "eslint ./mobileShop --cache --ignore-pattern .gitignore"
+    "check": "eslint ./config.base.project --cache --ignore-pattern .gitignore"
   },
   "keywords": [
     "react",
