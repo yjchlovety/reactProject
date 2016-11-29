@@ -27,7 +27,7 @@ class Loading extends React.Component {
     const style3 = this.checkShow(props.loadWords)
     return (
       <div className="zd_loading" style={style1}>
-        <div className="zd_load_mark" style={style2}></div>
+        <div className="zd_load_mark" style={style2}/>
         <div className="zd_load_center">
           <div className="zd_load_dot">
             <i/><i/><i/><i/>

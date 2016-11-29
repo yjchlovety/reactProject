@@ -14,7 +14,6 @@ class Login extends React.Component {
       loadWords: '正在加载...',
       notify: '错误提示',
       isLogin: true,
-      opacity: 11,
       username: 'admin',
       password: '123456',
       imgWord: 'Sign In'
@@ -99,10 +98,10 @@ class Login extends React.Component {
           </div>
         </header>
         <nav className="nav_login bo">
-          <a onClick={this.tabClick.bind(this, true)} className={this.state.isLogin ? "nav_lga" : ""}>
+          <a onClick={this.tabClick.bind(this, true)} className={this.state.isLogin ? 'nav_lga' : ''}>
             Sign In<span/>
           </a>
-          <a onClick={this.tabClick.bind(this, false)} className={this.state.isLogin ? "" : "nav_lga" }>
+          <a onClick={this.tabClick.bind(this, false)} className={this.state.isLogin ? '' : 'nav_lga' }>
             Sign Up<span/>
           </a>
         </nav>

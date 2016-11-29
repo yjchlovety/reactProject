@@ -7,7 +7,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="bo bo_body">
-        {this.props.children || "Welcome to your zdliu"}
+        {this.props.children || 'Welcome to your zdliu'}
       </div>
     )
   }

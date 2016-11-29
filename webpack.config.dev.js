@@ -26,7 +26,7 @@ const config = {
       {
         test: /\.js|jsx$/, // 检测哪些文件需要此loader，是一个正则表达式，用正则来匹配文件路径，这段意思是匹配 js 或者 jsx
         exclude: /(node_modules|bower_components)/,
-        loaders: [ 'babel' ]  // 加载模块 "babel" 是 "babel-loader" 的缩写
+        loaders: [ 'babel' ,'eslint-loader']  // 加载模块 "babel" 是 "babel-loader" 的缩写  eslint 语法检查
       },
       {
         test: /\.css$/,
@@ -48,6 +48,9 @@ const config = {
         ]
       }
     ]
+  },
+  eslint: {
+    configFile: './.eslintrc'
   },
   plugins: [
     new HtmlWebpackPlugin({

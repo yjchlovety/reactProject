@@ -20,10 +20,12 @@ class router extends React.Component {
   }
 
   checkLogin (next, replace) {
-    console.log(storage.getItemJson('user'))
-    if (!Store.getState().loginReducer.token && !storage.getItemJson('user').token) {
+    let user = storage.getItemJson('user')
+    if (!Store.getState().loginReducer.token && (!user || !user.token)) {
       replace('/login');
+      console.log('用户未登陆')
     }
+    Store.dispatch({ type: 'LOGIN_IN', user })
   }
 
   render () {

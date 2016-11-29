@@ -16,6 +16,8 @@ export default (state = userState, action) => {
       storage.setItemJson('user', Object.assign({}, action.user))
       return Object.assign({}, action.user);
     case LOGIN_OUT:
+      storage.clearItem('user')
+      state = { ...userState }
       return state;
     default:
       return state;

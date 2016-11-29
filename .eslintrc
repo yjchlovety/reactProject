@@ -1,16 +1,25 @@
 {
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
+  // 环境定义了预定义的全局变量。
   "env": {
     "browser": true,
     "node": true,
     "es6": true,
     "mocha": true
+  },
+  // JavaScript 语言选项
+  "parserOptions": {
+    // ECMAScript 版本
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    // 想使用的额外的语言特性:
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+//      "jsx": true,
+      "arrowFunctions": true,
+      "classes": true,
+      "modules": true,
+      "defaultParams": true
+    }
   },
   "plugins": [
     "react"
@@ -19,49 +28,122 @@
   "extends": [
     "eslint:recommended"
   ],
+  /**
+  * "off" 或 0 - 关闭规则
+  * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出),
+  * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
+  */
   "rules": {
-    "quotes": 0,
-    "no-console": 1,
-    "no-debugger": 1,
+    // 禁止条件表达式中出现赋值操作符
+    "no-cond-assign": 2,
+    // 允许console语句
+    "no-console": 0,
+    // 允许 debugger
+    "no-debugger": 0,
+    // 禁止 function 定义中出现重名参数
+    "no-dupe-args": 2,
+    // var声明
     "no-var": 1,
-    "import/named": 0,
+    // 分号;
     "semi": [
-      1,
+      0,
       "always"
     ],
-    "no-trailing-spaces": 0,
-    "eol-last": 0,
-    "no-underscore-dangle": 0,
+    // 使用 === 替代 == allow-null允许null和undefined==
+    "eqeqeq": [
+      2,
+      "allow-null"
+    ],
+    // 禁用 alert、confirm 和 prompt
     "no-alert": 0,
-    "no-lone-blocks": 0,
-    "jsx-quotes": 1,
-    "react/display-name": [
-      1,
+    // 禁用 eval()
+    "no-eval": 2,
+    // 禁用 with 语句
+    "no-with": 2,
+    // 要求或禁止使用严格模式指令
+    "strict": 2,
+    //////////////
+    // 变量声明 //
+    //////////////
+    // 要求或禁止 var 声明中的初始化(初值)
+    "init-declarations": 2,
+    // 不允许 catch 子句的参数与外层作用域中的变量同名
+    "no-catch-shadow": 0,
+    // 禁止删除变量
+    "no-delete-var": 2,
+    // 不允许标签与变量同名
+    "no-label-var": 2,
+    // 禁用特定的全局变量
+    "no-restricted-globals": 0,
+    // 禁止 var 声明 与外层作用域的变量同名
+    "no-shadow": 0,
+    // 禁止覆盖受限制的标识符
+    "no-shadow-restricted-names": 2,
+    // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
+    "no-undef": 2,
+    // 禁止将变量初始化为 undefined
+    "no-undef-init": 2,
+    // 禁止将 undefined 作为标识符
+    "no-undefined": 0,
+    // 禁止出现未使用过的变量
+    "no-unused-vars": [
+      0,
       {
-        "ignoreTranspilerName": false
+        "vars": "all",
+        "args": "none"
       }
     ],
-    "react/forbid-prop-types": [
+    // 不允许在变量定义之前使用它们
+    "no-use-before-define": 0,
+    // 强制一行的最大长度
+    "max-len": [
       1,
-      {
-        "forbid": [
-          "any"
-        ]
-      }
+      200
     ],
-    "react/no-danger": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-direct-mutation-state": 1,
-    "react/no-multi-comp": 1,
-    "react/no-set-state": 0,
-    "react/no-unknown-property": 1,
-    "react/prefer-es6-class": 1,
-    "react/prop-types": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/require-extension": 1,
-    "react/self-closing-comp": 1,
-    "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    // 文件末尾强制换行
+    "eol-last": 0,
+    // 强制使用一致的反勾号、双引号或单引号
+    "quotes": [
+      2,
+      "single"
+    ],
+    // 禁止修改 const 声明的变量
+    "no-const-assign": 2,
+    // 禁止标识符中有悬空下划线_bar
+    "no-underscore-dangle": 0,
+    // 禁用行尾空格
+    "no-trailing-spaces": 2,
+    // 禁用不必要的嵌套块
+    "no-lone-blocks": 2,
+    // 强制在 JSX 属性中一致地使用双引号或单引号
+    "jsx-quotes": 0
+//    "react/display-name": [
+//      1,
+//      {
+//        "ignoreTranspilerName": false
+//      }
+//    ],
+//    "react/forbid-prop-types": [
+//      1,
+//      {
+//        "forbid": [
+//          "any"
+//        ]
+//      }
+//    ],
+//    "react/no-danger": 1,
+//    "react/no-did-mount-set-state": 1,
+//    "react/no-did-update-set-state": 1,
+//    "react/no-direct-mutation-state": 1,
+//    "react/no-multi-comp": 1,
+//    "react/no-set-state": 0,
+//    "react/no-unknown-property": 1,
+//    "react/prefer-es6-class": 1,
+//    "react/prop-types": 1,
+//    "react/react-in-jsx-scope": 1,
+//    "react/require-extension": 1,
+//    "react/self-closing-comp": 1,
+//    "react/sort-comp": 1,
+//    "react/wrap-multilines": 1
   }
 }

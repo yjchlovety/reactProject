@@ -14,7 +14,10 @@ const storage = {
     return localStorage.getItem(key)
   },
   getItemJson: (key) => {
-    return JSON.parse(storage.getItem(key))
+    if (storage.getItem(key)) {
+      return JSON.parse(storage.getItem(key))
+    }
+    return ''
   },
   clearItem: (key) => {
     storage.setItem(key, '')
