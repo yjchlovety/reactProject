@@ -28,7 +28,7 @@ function request (url, options) {
     fetch(`/api${url}`, options)
       .then(resp => {
         // console.log('resp', resp.json)
-        let msg
+        let msg = ''
         if (resp.status !== 200) {
           switch (resp.status) {
             case 401:
@@ -105,16 +105,17 @@ export const query = function query (url, data) {
 }
 
 export const upload = function upload (url, form, isNeedCred = false) {
-  let options
+  let options = {}
   if (!global.FormData) {
     console.warn('your browser not support upload')
     return
   }
+  /*eslint-disable */
   if (!form instanceof global.FormData) {
     console.warn('only support formdata upload')
     return
   }
-
+  /*eslint-disable */
   options = {
     method: 'POST',
     body: form,
