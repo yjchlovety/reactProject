@@ -98,7 +98,7 @@ class Login extends React.Component {
           </div>
         </header>
         <nav className="nav_login bo">
-          <a onClick={this.tabClick.bind(this, true)} className={this.state.isLogin ? 'nav_lga' : ""}>
+          <a onClick={this.tabClick.bind(this, true)} className={this.state.isLogin ? 'nav_lga' : ''}>
             Sign In<span/>
           </a>
           <a onClick={this.tabClick.bind(this, false)} className={this.state.isLogin ? '' : 'nav_lga' }>
