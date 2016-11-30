@@ -7,11 +7,9 @@ const exec = require('child_process').exec
 const jsHint = require('eslint').JSHINT
 const fs = require('fs')
 
-let content = fs.readFileSync('./.eslintrc', 'utf-8'),
-  content = JSON.parse(content);
-
-var pass = 0;
-
+let content = JSON.parse(fs.readFileSync('./.eslintrc', 'utf-8'))
+let pass = 0
+console.log(111)
 exec('git diff HEAD --name-only --diff-filter=ACMR -- static/' + configBase.project + '/**.js',
   (error, stdout, stderr) => {
     if (stdout.length) {
