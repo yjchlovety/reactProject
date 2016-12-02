@@ -26,7 +26,7 @@ class Loading extends React.Component {
     const style2 = this.checkShow(props.mask)
     const style3 = this.checkShow(props.loadWords)
     return (
-      <div className="zd_loading" style={style1}>
+      <div className={this.props.isFixed ? 'zd_loading fix_load' : 'zd_loading' } style={style1}>
         <div className="zd_load_mark" style={style2}/>
         <div className="zd_load_center">
           <div className="zd_load_dot">
@@ -42,10 +42,12 @@ Loading.propTypes = {
   state: React.PropTypes.bool,
   mask: React.PropTypes.bool, //遮罩
   loadWords: React.PropTypes.string, //遮罩
+  isFixed: React.PropTypes.bool // 是否fix 定位
 }
 Loading.defaultProps = {
   state: false,
   mask: false,
   loadWords: '',
+  isFixed: false
 }
 export default Loading

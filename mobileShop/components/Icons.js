@@ -6,6 +6,11 @@ import React from 'react'
 
 class Icons extends React.Component {
 
+  constructor (props) {
+    super(props)
+    window.document.title = 'Icons'
+  }
+
   render () {
     return (
       <ul className="icon_lists clear_both">

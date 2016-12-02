@@ -28,15 +28,10 @@ class Confirm extends React.Component {
       <div className="zd_confirm">
         <span className="zd_confirm_bg"/>
         <div className="zd_confirm_warp">
-          <div className="zd_confirm_title">提示</div>
-          <div className="zd_confirm_word">{props.title}</div>
-          <div className="zd_confirm_btn">
-            <div className="btn_ddv">
-              <Button className="btn_confirm" onClick={this.doCancel.bind(this)}>取消</Button>
-            </div>
-            <div className="btn_ddv">
-              <Button className="btn_confirm" onClick={this.doClose.bind(this)}>确定</Button>
-            </div>
+          <div className="zd_confirm_word bo bo-ac bo-pc">{props.title}</div>
+          <div className="zd_confirm_btn bo">
+            <Button className="btn_confirm" onClick={this.doCancel.bind(this)}>取消</Button>
+            <Button className="btn_confirm" onClick={this.doClose.bind(this)}>确定</Button>
           </div>
         </div>
       </div>

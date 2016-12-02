@@ -1,11 +1,13 @@
 .zd_loading {
-  position: fixed;
+  position: absolute;
   z-index: 99999;
   display: none;
   top: 0;
+  width: 100%;
+  height: 100%;
   left: 0;
   .zd_load_mark {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
@@ -16,7 +18,7 @@
   }
   .zd_load_center {
     width: 80%;
-    position: fixed;
+    position: absolute;
     top: 50%;
     margin-top: -15px;
     z-index: 2;
@@ -76,6 +78,10 @@
       }
     }
   }
+}
+
+.fix_load {
+  position: fixed;
 }
 
 @-webkit-keyframes antRotate {

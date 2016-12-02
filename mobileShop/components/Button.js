@@ -65,6 +65,12 @@ class Button extends React.Component {
       </button>
     )
   }
+
+  componentWillUnmonut () {
+    if (this.state.activeClick) {
+      clearTimeout(this.state.activeClick)
+    }
+  }
 }
 
 Button.propTypes = {

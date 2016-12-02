@@ -4,14 +4,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import loginAction from '../actions/LoginAction'
+import { Link, IndexLink } from 'react-router'
 
 class Views extends React.Component {
 
   constructor (props) {
     super(props)
-    this.state = {
-      title: '',
-    }
   }
 
   doLoginOut () {
@@ -20,31 +18,34 @@ class Views extends React.Component {
   }
 
   render () {
-    console.log(this.props.user)
     return (
       <div className="bo bo-ver bo-f1">
-        <div className="bo-f1">{this.props.children}</div>
+        <div className="bo-f1 bo">{this.props.children}</div>
         <div className="footer_warp">
-          <ul className="footer_menu">
-            <li className="menu_li">
-              <i/>
-              <span>首页</span>
+          <ul className="footer_menu bo">
+            <li>
+              <IndexLink to="/" activeClassName="footer_btn_a">
+                <i className="iconfont icon-home"/><span>首页</span>
+              </IndexLink>
             </li>
             <li>
-              <i/>
-              <span>分类</span>
+              <Link to="/label" activeClassName="footer_btn_a">
+                <i className="iconfont icon-menuunfold"/><span>分类</span>
+              </Link>
             </li>
             <li>
-              <i/>
-              <span>购物车</span>
+              <Link to="/cart" activeClassName="footer_btn_a">
+                <i className="iconfont icon-shoppingcart"/><span>购物车</span>
+              </Link>
             </li>
             <li onClick={this.doLoginOut.bind(this)}>
-              <i/>
+              <i className="iconfont icon-logout"/>
               <span>待定/退出</span>
             </li>
             <li>
-              <i/>
-              <span>我的</span>
+              <Link to="/own" activeClassName="footer_btn_a">
+                <i className="iconfont icon-user"/><span>我的</span>
+              </Link>
             </li>
           </ul>
         </div>

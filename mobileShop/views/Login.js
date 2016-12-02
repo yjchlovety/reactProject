@@ -59,15 +59,16 @@ class Login extends React.Component {
   }
 
   doLoginUp () {
-    this.setState({ loading: true, loadWords: '正在注册...' })
-    setTimeout(() => {
-      this.setState({ loading: false })
-      Notify.confirm({
-        title: '你确定要注册嘛！', onClose: () => {
-          console.log(222)
-        }
-      })
-    }, 1000)
+    Notify.confirm({
+      title: '你确定要注册嘛！', onClose: () => {
+        console.log(222)
+      }
+    })
+    // this.setState({ loading: true, loadWords: '正在注册...' })
+    // setTimeout(() => {
+    //   this.setState({ loading: false })
+    //
+    // }, 1000)
   }
 
   doBtnClick () {
@@ -89,7 +90,7 @@ class Login extends React.Component {
 
   render () {
     return (
-      <div className="bo bo-f1 bo-ver login">
+      <div className="bo bo-f1 bo-ver login main_warp">
         <Loading loadWords={this.state.loadWords} state={this.state.loading}/>
         <header className="login_header">
           <div className="login_word bo bo-pc bo-ver">

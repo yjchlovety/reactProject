@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/common.css'
 import './css/font/iconfont.css'
-import './css/blog.less'
+import './css/shop.less'
 
 class App extends React.Component {
   render () {

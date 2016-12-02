@@ -17,49 +17,39 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 240px;
-    height: 140px;
-    margin: -70px 0 0 -120px;
+    width: 270px;
+    height: 104px;
+    margin: -62px 0 0 -135px;
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: 10px;
     background-color: #fff;
     overflow: hidden;
     z-index: 2;
-    .zd_confirm_title {
-      line-height: 30px;
-      height: 30px;
-      color: #666;
-      font-size: 16px;
-      margin: 0 8px;
-      box-sizing: border-box;
-      border-bottom: 1px solid #e0e0e0;
-    }
     .zd_confirm_word {
-      padding: 12px 20px 0;
-      margin-bottom: 12px;
-      height: 48px;
+      padding: 10px 10px 0;
+      height: 50px;
+      margin-bottom: 10px;
+      text-align: center;
+      line-height: 20px;
       word-break: break-all;
       overflow: hidden;
-      line-height: 24px;
+      box-sizing: border-box;
       color: #444;
     }
     .zd_confirm_btn {
-      height: 52px;
-      .btn_ddv {
+      height: 45px;
+      border-top: 1px solid #e0e0e0;
+      .btn_confirm {
+        border-radius: 0;
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 7px 15px;
         width: 50%;
-        height: 52px;
-        float: left;
-        .btn_confirm {
-          border-radius: 0;
-          padding: 7px 15px;
-        }
+        height: 45px;
+        color: #007aff
       }
-      .btn_ddv:first-child {
-        .btn_confirm {
-          background-color: #fff;
-          color: #666;
-          border-top: 1px solid #e0e0e0;
-        }
+      .btn_confirm:first-child {
+        border-right: 1px solid #e0e0e0;
       }
     }
   }

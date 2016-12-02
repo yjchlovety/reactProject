@@ -1,5 +1,9 @@
 @import "base";
 
+.main_warp {
+  position: relative;
+}
+
 .input_blog {
   display: block;
   padding: 12px 15px;
@@ -17,28 +21,29 @@
   border-top: 1px solid @borderColor;
   .footer_menu {
     text-align: center;
+    padding: 6px 0;
     li {
       width: 20%;
-      float: left;
       height: 48px;
       font-size: @fontSize12;
       color: @color6;
-      padding-top: 6px;
-      padding-bottom: 6px;
       line-height: 16px;
+      a {
+        color: @color6;
+      }
+      .footer_btn_a {
+        color: @colorFont;
+      }
       i {
-        height: 28px;
-        width: 28px;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
         border-radius: @borderRadius;
         display: inline-block;
-        background-color: #eee;
       }
       span {
         display: block;
       }
-    }
-    .menu_li {
-      color: @colorFont;
     }
   }
 }

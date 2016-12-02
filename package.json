@@ -58,12 +58,12 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.16.4",
     "rc-util": "^4.0.1",
-    "react": "^15.3.1",
+    "react": "^15.4.1",
+    "react-addons-update": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
     "redux": "^3.5.2",
-    "react-addons-update": "^15.3.1",
     "redux-logger": "^2.7.0",
     "url": "^0.11.0"
   }
