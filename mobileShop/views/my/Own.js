@@ -3,10 +3,11 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
+import mlUtils from './../../utils/mlUtils'
 
 class Own extends React.Component {
   constructor (props) {
-    window.document.title = '我的'
+    mlUtils.setTitle('我的')
     super(props)
     this.state = {}
   }

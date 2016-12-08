@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import '../css/login.less'
 import { Button, Loading, Notify } from '../components/Cpt'
 import loginAction from '../actions/LoginAction'
+import mlUtils from './../utils/mlUtils'
 
 class Login extends React.Component {
   constructor (props) {
@@ -80,8 +81,7 @@ class Login extends React.Component {
   }
 
   setDocTitle () {
-    window.document.title = this.state.title
-
+    mlUtils.setTitle(this.state.title)
   }
 
   componentWillMount () {

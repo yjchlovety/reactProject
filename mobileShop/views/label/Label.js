@@ -3,10 +3,11 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
+import mlUtils from './../../utils/mlUtils'
 
 class Label extends React.Component {
   constructor (props) {
-    window.document.title = '分类'
+    mlUtils.setTitle('分类')
     super(props)
     this.state = {}
   }

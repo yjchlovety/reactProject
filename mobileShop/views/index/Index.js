@@ -4,10 +4,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Loading } from '../../components/Cpt'
+import Search from '../Search'
+import mlUtils from './../../utils/mlUtils'
 
 class Index extends React.Component {
   constructor (props) {
-    window.document.title = '首页'
+    mlUtils.setTitle('首页')
     super(props)
     this.state = {
       loading: true
@@ -19,12 +21,13 @@ class Index extends React.Component {
       this.setState({
         loading: false
       })
-    }, 2000)
+    }, 1000)
   }
 
   render () {
     return (
       <div className="bo-f1 main_warp">
+        <Search/>
         <Loading state={this.state.loading}/>
         <span>首页</span>
       </div>

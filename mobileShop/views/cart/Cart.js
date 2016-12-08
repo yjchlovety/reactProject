@@ -3,10 +3,11 @@
  */
 import React from 'react'
 import { connect } from 'react-redux'
+import mlUtils from './../../utils/mlUtils'
 
 class Cart extends React.Component {
   constructor (props) {
-    window.document.title = '购物车'
+    mlUtils.setTitle('购物车')
     super(props)
     this.state = {}
   }

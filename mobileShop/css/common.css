@@ -5,6 +5,7 @@ h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul, select, div {
   word-break: break-all;
   font-family: arial, 'Microsoft YaHei', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-overflow-scrolling: touch; /*ios下滚动流畅*/
 }
 
 a, a:hover {
