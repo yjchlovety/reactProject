@@ -59,22 +59,25 @@ Plugins
 
 ```js
 <!-- webpack.config.dev.js -->
+
 const webpack = require('webpack');
 const path = require('path');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const configBase = require('./config.base')
+const ip = require('ip')
+const lostIp = ip.address()
 const config = {
   entry: [
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:' + configBase.port,
-    path.resolve(__dirname, 'app/index.js')
+    'webpack-dev-server/client?http://' + lostIp + ':' + configBase.port,
+    path.resolve(__dirname, configBase.project + '/index.js')
   ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: 'http://localhost:' + configBase.port + '/' // 引用路径
+    publicPath: 'http://' + lostIp + ':' + configBase.port + '/' // 引用路径
   },
   resolve: {
     extensions: [ '', '.js', '.jsx' ]
@@ -83,13 +86,21 @@ const config = {
   module: {
     loaders: [
       {
-        test: /\.js|jsx$/, // 检测哪些文件需要此loader，是一个正则表达式，用正则来匹配文件路径，这段意思是匹配 js 或者 jsx
+        test: /\.js|jsx$/, // 正则匹配
         exclude: /(node_modules|bower_components)/,
-        loaders: [ 'babel' ]  // 加载模块 "babel" 是 "babel-loader" 的缩写
+        loaders: [ 'babel' ,'eslint-loader']  // 加载模块 "babel" 是 "babel-loader" 的缩写  eslint 语法检查
       },
       {
         test: /\.css$/,
         loaders: [ "style", "css?sourceMap" ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf)$/i,
+        loader: "file-loader?name=fonts/[name]-[hash].[ext]"
+      },
+      {
+        test: /\.less$/,
+        loader: "style!css!less"
       },
       {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
@@ -100,10 +111,13 @@ const config = {
       }
     ]
   },
+  eslint: {
+    configFile: './.eslintrc'  // eslint配置文件
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      favicon: './app/favicon.ico',
-      template: 'app/template.html',
+      favicon: configBase.project + '/favicon.ico',
+      template: configBase.project + '/template.html',
       filename: 'index.html',
       inject: true,  //允许插件修改哪些内容，包括head与body
       hash: true,    //为静态资源生成hash值
@@ -118,7 +132,7 @@ const config = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new OpenBrowserPlugin({ url: 'http://localhost:' + configBase.port }),
+    new OpenBrowserPlugin({ url: 'http://' + lostIp + ':' + configBase.port }),
     new DashboardPlugin()
   ]
 }
@@ -129,37 +143,67 @@ module.exports = config
 ```js
 <!-- server.js -->
 const webpack = require('webpack');
+const express = require('express')
 const webpackDevServer = require('webpack-dev-server');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const proxy = require('proxy-middleware')
 const devConfig = require('./webpack.config.dev.js');
 const configBase = require('./config.base')
 
-const isDeveloping = process.env.NODE_ENV === 'development';
 const port = configBase.port;
+
+const ip = require('ip')
+const lostIp = ip.address()
+// const app = express()
+// const compiler = webpack(devConfig);
+
+// app.use(webpackDevMiddleware(compiler, {
+//     publicPath: devConfig.output.publicPath,
+//     stats: { colors: true }, // 用颜色标识
+//   }
+// ))
+// app.use(webpackHotMiddleware(compiler));
+// app.use(proxy(configBase.proxyIp));
+// app.listen(port, lostIp, function (err) {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log('------>服务启动中 ' + lostIp + ' port ' + port + '<------');
+// });
+//
+// app.get('/', function (req, res) {
+//   console.log(req.url);
+//   // res.sendFile(path.join(__dirname, './dist/index.html'));
+// });
+//
+// app.get('/api', function (req, res) {
+//   console.log(req.url);
+//   // res.sendFile(path.join(__dirname, './dist/index.html'));
+// });
 
 function baseConfig (config, contentBase) {
   return new webpackDevServer(webpack(config), {
-    historyApiFallback: true, //启用历史API后备支持
-    hot: true, //添加HotModuleReplacementPlugin和切换服务器热模式
-    inline: true, //嵌入的WebPack-dev的服务器运行到包
-    progress: true, //显示某种进度条
-    contentBase: contentBase, //为内容的基本路径
-    stats: { colors: true } // 用颜色标识
-  });
+      historyApiFallback: true, //启用历史API后备支持
+      hot: true, //添加HotModuleReplacementPlugin和切换服务器热模式
+      inline: true, //嵌入的WebPack-dev的服务器运行到包
+      progress: true, //显示某种进度条
+      contentBase: contentBase, //为内容的基本路径
+      stats: { colors: true }, // 用颜色标识
+    }
+  );
 }
 
 var server
-if (isDeveloping) {
-  server = baseConfig(devConfig, "/app");
-  console.log("开发环境 development mode... ");
-}
+server = baseConfig(devConfig, "/" + configBase.project);
+console.log("开发环境 development mode... " + '项目 ' + configBase.project);
 
-server.listen(port, "localhost", function (err) {
+server.listen(port, lostIp, function (err) {
   if (err) {
     console.log(err);
   }
-  console.log('------>服务启动中 Listening on ' + process.env.NODE_ENV + ' port ' + port + '<------');
+  console.log('------>服务启动中 ' + lostIp + ' on ' + process.env.NODE_ENV + ' port ' + port + '<------');
 });
-
 ```
 
 ```js
@@ -181,13 +225,9 @@ ES6 和 JSX 转换
     "stage-0",
     "react"
   ],
-  "plugins": [
-    "transform-decorators-legacy"
-  ]
+  "plugins": []
 }
 ```
-这里transform-decorators-legacy暂且用不到,是解析ES7语法的
-
 
 ## 使用 ESlint 进行代码检查
 特点:
